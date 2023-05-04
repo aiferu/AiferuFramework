@@ -1,0 +1,4 @@
+Assets\AiferuFramework\知识学习&收集\3.Shader实例\通用渲染管线\004.shader_通用卡通水\ToonWater_fenieer\Roystan_Toon_Water.mat
+Assets\AiferuFramework\知识学习&收集\3.Shader实例\通用渲染管线\004.shader_通用卡通水\Unlit_ToonWater.mat
+共有 2 个Material用到：Roystan/Toon/Water
+用到的shader名字为：Roystan/Toon/Water

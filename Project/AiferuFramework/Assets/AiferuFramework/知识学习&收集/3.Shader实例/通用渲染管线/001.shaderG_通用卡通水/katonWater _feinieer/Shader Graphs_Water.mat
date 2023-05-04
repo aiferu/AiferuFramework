@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Shader Graphs_Water
+  m_Shader: {fileID: -6465566751694194690, guid: ed7a35f633726e7478c4c898e2996c2a, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 3000
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _SampleTexture2D_3e0f52ace2f146b4bb6669edcc35460f_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 20e67f98a58b9fb44965d8c8cdfea6a1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_65ddc2f160a2440ea4652ab17f8a7db0_Texture_1:
+        m_Texture: {fileID: 2800000, guid: e0e37ee6d664313468c4241cbeb55572, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_1d1108bf302b42edbfa12afec2d1b9af: 0.149
+    - Vector1_3041edb6e14749abb3747da86d1e1791: 2.03
+    - Vector1_e85bb6a1d63943aab45ff577d86953b9: 0.731
+    - _Alpha: 0.7
+    - _DeepRange: 0.32
+    - _Float: 50
+    - _FrothDensity: 594.4
+    - _FrothSpeed: 0.0015
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _RippleRange: 0.52
+    - _Ripple_Density: 89.1
+    - _Ripple_density: 15
+    - _WaveSpeed: 1
+    - _qiangdu: 1.47
+    - _qiangdu2: 0.114
+    - _speed: 0.1
+    m_Colors:
+    - Color_182a440026444fc9b2c45e78358de590: {r: 0.009433985, g: 0.009433985, b: 0.009433985, a: 1}
+    - Color_586ce45fe8ef4c2191bf84de1d03cf46: {r: 0, g: 0.601, b: 0.601, a: 0}
+    - Color_c613f21a4f3c4cb38950c68da8a0f2ec: {r: 0, g: 0.19137254, b: 0.61, a: 0}
+    - _BaseColor: {r: 0.4470588, g: 1, b: 1, a: 1}
+    - _DeepColor: {r: 0.19215685, g: 0.57549185, b: 1, a: 1}
+    - _RippleColor: {r: 1, g: 1, b: 1, a: 0.7254902}
+  m_BuildTextureStacks: []
+--- !u!114 &7009438377106144739
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 5
