@@ -17,7 +17,7 @@ RenderSettings:
   m_Fog: 1
   m_FogColor: {r: 0, g: 0, b: 0, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.001
+  m_FogDensity: 0.03
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.24528301, g: 0.24528301, b: 0.24528301, a: 1}
@@ -130,14 +130,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7546470341874627137, guid: c26af53f7ebdd904ca26c1f387e6a972, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7546470342032042620, guid: c26af53f7ebdd904ca26c1f387e6a972, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7546470342457373870, guid: c26af53f7ebdd904ca26c1f387e6a972, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -185,30 +177,6 @@ PrefabInstance:
     - target: {fileID: 7546470342457373871, guid: c26af53f7ebdd904ca26c1f387e6a972, type: 3}
       propertyPath: m_Name
       value: FXScene
-      objectReference: {fileID: 0}
-    - target: {fileID: 7546470342457373871, guid: c26af53f7ebdd904ca26c1f387e6a972, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7546470342688333622, guid: c26af53f7ebdd904ca26c1f387e6a972, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7546470343351244497, guid: c26af53f7ebdd904ca26c1f387e6a972, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7546470343668667427, guid: c26af53f7ebdd904ca26c1f387e6a972, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7546470343668667427, guid: c26af53f7ebdd904ca26c1f387e6a972, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7546470343743092394, guid: c26af53f7ebdd904ca26c1f387e6a972, type: 3}
-      propertyPath: m_Layer
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c26af53f7ebdd904ca26c1f387e6a972, type: 3}
