@@ -65,7 +65,7 @@ namespace AiferuFramework
             AllCameras = Camera.allCameras;
 
             Handles.BeginGUI();
-            GUILayout.BeginArea(new Rect(0, 0, 150, 2000)); // 规定显示区域为屏幕大小
+            GUILayout.BeginArea(new Rect(0, 0, 150, 2000)); // 规定显示区域为大小
 
             // -----------------------------------------------
             //在分割线内，添加代码
@@ -73,21 +73,14 @@ namespace AiferuFramework
             //启动按钮
             CameraisFollowEnable = GUILayout.Toggle(CameraisFollowEnable, "CameraisFollowEnable");
 
-           
-
             if (CameraisFollowEnable)
             {
-                //渲染按钮
                 DrawButton();
-                //设置当前选中摄像机
-
-                //摄像机跟随
                 CameraFollow();
             }else
             {
                 TargetCameraTransform = null;
             }
-
             // -----------------------------------------------
 
             GUILayout.EndArea();
@@ -95,6 +88,9 @@ namespace AiferuFramework
 
         }
 
+        /// <summary>
+        /// 渲染按钮
+        /// </summary>
         private static void DrawButton()
         {
             GUILayout.BeginVertical("box");
