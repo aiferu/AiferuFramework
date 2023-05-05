@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RuleName: Scenes
   judgmentType: 0
-  keyword: 
-  priority: 1
+  keyword: Scenes
+  priority: 3
   filePath: Assets/Scipts/Editor/AssetsManagementTools/AssetPreProcessingTools/JudgeMentConditionItemConfigData/JudgeMentConditionItemConfigData23.asset
