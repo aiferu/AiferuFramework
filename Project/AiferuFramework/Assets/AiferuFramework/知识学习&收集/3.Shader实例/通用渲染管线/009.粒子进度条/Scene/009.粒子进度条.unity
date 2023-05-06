@@ -5515,6 +5515,78 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[2]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7508431246686484776, guid: a9bec6a5b472f4e488ec5a238e768b40, type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7508431246686484776, guid: a9bec6a5b472f4e488ec5a238e768b40, type: 3}
+      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7508431246686484776, guid: a9bec6a5b472f4e488ec5a238e768b40, type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[0].m_Name
+      value: TrailSpawnRate
+      objectReference: {fileID: 0}
+    - target: {fileID: 7508431246686484776, guid: a9bec6a5b472f4e488ec5a238e768b40, type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[1].m_Name
+      value: Size
+      objectReference: {fileID: 0}
+    - target: {fileID: 7508431246686484776, guid: a9bec6a5b472f4e488ec5a238e768b40, type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[2].m_Name
+      value: LifeTime
+      objectReference: {fileID: 0}
+    - target: {fileID: 7508431246686484776, guid: a9bec6a5b472f4e488ec5a238e768b40, type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[3].m_Name
+      value: SpawnRate
+      objectReference: {fileID: 0}
+    - target: {fileID: 7508431246686484776, guid: a9bec6a5b472f4e488ec5a238e768b40, type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[0].m_Value
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7508431246686484776, guid: a9bec6a5b472f4e488ec5a238e768b40, type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[1].m_Value
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7508431246686484776, guid: a9bec6a5b472f4e488ec5a238e768b40, type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[2].m_Value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7508431246686484776, guid: a9bec6a5b472f4e488ec5a238e768b40, type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[3].m_Value
+      value: 5000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7508431246686484776, guid: a9bec6a5b472f4e488ec5a238e768b40, type: 3}
+      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[0].m_Name
+      value: Color
+      objectReference: {fileID: 0}
+    - target: {fileID: 7508431246686484776, guid: a9bec6a5b472f4e488ec5a238e768b40, type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[0].m_Overridden
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7508431246686484776, guid: a9bec6a5b472f4e488ec5a238e768b40, type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[1].m_Overridden
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7508431246686484776, guid: a9bec6a5b472f4e488ec5a238e768b40, type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[2].m_Overridden
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7508431246686484776, guid: a9bec6a5b472f4e488ec5a238e768b40, type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[3].m_Overridden
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7508431246686484776, guid: a9bec6a5b472f4e488ec5a238e768b40, type: 3}
+      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[0].m_Value.y
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7508431246686484776, guid: a9bec6a5b472f4e488ec5a238e768b40, type: 3}
+      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[0].m_Value.z
+      value: 2.9960785
+      objectReference: {fileID: 0}
+    - target: {fileID: 7508431246686484776, guid: a9bec6a5b472f4e488ec5a238e768b40, type: 3}
+      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[0].m_Overridden
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9bec6a5b472f4e488ec5a238e768b40, type: 3}
 --- !u!1001 &3080896602196312804

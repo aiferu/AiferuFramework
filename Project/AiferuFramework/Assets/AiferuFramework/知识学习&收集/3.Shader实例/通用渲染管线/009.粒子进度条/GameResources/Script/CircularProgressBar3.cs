@@ -87,9 +87,10 @@ public class CircularProgressBar3 : MonoBehaviour
     private void Initialize()
     {
         progressText.text = "";
-        waterImage.enabled = false;
+        //waterImage.color =new Color(Mathf.Clamp(waterImage.color.a - Time.deltaTime * 0.1f,0,1));
         foreach (var visualEffect in visualEffects)
         {
+            visualEffect.SetFloat("TrailSpawnRate",5);
             visualEffect.enabled = true;
         }
         foreach (var particleSystem in particleSystems_Ring)
@@ -114,7 +115,7 @@ public class CircularProgressBar3 : MonoBehaviour
         waterImage.enabled = true;
         foreach (var visualEffect in visualEffects)
         {
-            visualEffect.enabled = false;
+            visualEffect.SetFloat("TrailSpawnRate", 0);
         }
         foreach (var particleSystem in particleSystems_Ring)
         {
