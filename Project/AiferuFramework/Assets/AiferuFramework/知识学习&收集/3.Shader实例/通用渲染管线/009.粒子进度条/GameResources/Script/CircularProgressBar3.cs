@@ -46,7 +46,6 @@ public class CircularProgressBar3 : MonoBehaviour
     {
         //≥ı ºªØ
         Initialize();
-
     }
 
 
@@ -151,4 +150,5 @@ public class CircularProgressBar3 : MonoBehaviour
         }
     }
     #endregion
+
 }

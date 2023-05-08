@@ -5499,10 +5499,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1437867065721966028, guid: a9bec6a5b472f4e488ec5a238e768b40, type: 3}
-      propertyPath: m_Color.a
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6349588582878755112, guid: a9bec6a5b472f4e488ec5a238e768b40, type: 3}
       propertyPath: m_Name
       value: CircularProgressBar3
