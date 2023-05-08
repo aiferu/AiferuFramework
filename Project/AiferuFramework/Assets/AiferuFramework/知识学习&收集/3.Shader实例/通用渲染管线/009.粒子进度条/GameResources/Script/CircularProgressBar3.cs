@@ -87,7 +87,16 @@ public class CircularProgressBar3 : MonoBehaviour
     private void Initialize()
     {
         progressText.text = "";
-        //waterImage.color =new Color(Mathf.Clamp(waterImage.color.a - Time.deltaTime * 0.1f,0,1));
+        progressText.color = new Color(
+            progressText.color.r,
+            progressText.color.g,
+            progressText.color.b,
+            Mathf.Clamp(progressText.color.a - Time.deltaTime * 0.2f, 0, 1));
+        waterImage.color = new Color(
+            waterImage.color.r,
+            waterImage.color.g,
+            waterImage.color.b,
+            Mathf.Clamp(waterImage.color.a - Time.deltaTime * 0.2f, 0, 1));
         foreach (var visualEffect in visualEffects)
         {
             visualEffect.SetFloat("TrailSpawnRate",5);
@@ -112,7 +121,16 @@ public class CircularProgressBar3 : MonoBehaviour
     private void Playing()
     {
         progressText.text = ((int)(progressValue*100)).ToString();
-        waterImage.enabled = true;
+        progressText.color = new Color(
+            progressText.color.r,
+            progressText.color.g,
+            progressText.color.b,
+            Mathf.Clamp(progressText.color.a + Time.deltaTime * 0.2f, 0, 1));
+        waterImage.color = new Color(
+            waterImage.color.r,
+            waterImage.color.g,
+            waterImage.color.b,
+            Mathf.Clamp(waterImage.color.a + Time.deltaTime * 0.1f, 0, 0.3f));
         foreach (var visualEffect in visualEffects)
         {
             visualEffect.SetFloat("TrailSpawnRate", 0);
