@@ -25,12 +25,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 0}
-        m_Scale: {x: 2, y: 1}
+        m_Scale: {x: 2, y: 2}
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _BumpAmt: 0
     - _Shininess: 0.078125
-    - _TintAmt: 0
+    - _TintAmt: 0.08
     m_Colors:
     - _BumpMap_ST: {r: 1, g: 1, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
