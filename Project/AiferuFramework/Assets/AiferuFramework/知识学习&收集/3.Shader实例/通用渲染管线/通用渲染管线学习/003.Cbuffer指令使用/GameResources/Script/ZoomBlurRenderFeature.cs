@@ -135,6 +135,10 @@ public class ZoomBlurRenderFeature : ScriptableRendererFeature
             var cmd = CommandBufferPool.Get(k_RenderTag);
 
             Render(cmd,ref renderingData);
+
+            //÷¥––,ªÿ ’
+            context.ExecuteCommandBuffer(cmd);
+            CommandBufferPool.Release(cmd);
             
         }
 

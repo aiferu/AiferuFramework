@@ -4,6 +4,8 @@ Shader "MyFrostedGlass"
     {
         _FrostTexture("FrostTexture",2D) = "white"{}
         _FrostIntensity("Frost Intensity", Range(0.0, 1.0)) = 0.5
+        _MaskTexture("MaskTexture",2D) = "white"{}
+        
     }
     SubShader
     {
@@ -19,6 +21,7 @@ Shader "MyFrostedGlass"
         //在pass通道外面声明
         CBUFFER_START(UnityPerMaterial)
         float4 _FrostTexture_ST;
+        float4 _MaskTexture_ST;
         float _FrostIntensity;
 
         CBUFFER_END
@@ -28,12 +31,17 @@ Shader "MyFrostedGlass"
         {                                        //声明这个pass是一个渲染pass
             Tags{"LightMode"="UniversalForward" "RenderType" = "Transparent" "Queue" = "Transparent"}//这个Pass最终会输出到颜色缓冲里//URP只支持一个pass通道输出渲染，其他pass只能进行计算
 
+            blend SrcAlpha OneMinusSrcAlpha  
+            
             HLSLPROGRAM //CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
 
             TEXTURE2D(_FrostTexture);
             SAMPLER(sampler_FrostTexture);
+
+            TEXTURE2D(_MaskTexture);
+            SAMPLER(sampler_MaskTexture);
 
             TEXTURE2D(_BluredTexture0);
             SAMPLER(sampler_BluredTexture0);
@@ -51,8 +59,9 @@ Shader "MyFrostedGlass"
             struct Varings
             {
                 float4 positionCS : SV_POSITION;
-                float2 uv : TEXCOORD0;
+                float2 uvFrostTex : TEXCOORD0;
                 float4 uvBluredTex : TEXCOORD1;
+                float2 uvMaskTex : TEXCOORD2;
             };
 
             Varings vert(Attributes i)
@@ -60,7 +69,8 @@ Shader "MyFrostedGlass"
                 Varings o;
                 VertexPositionInputs posInputs = GetVertexPositionInputs(i.positionOS.xyz);
                 o.positionCS = posInputs.positionCS;
-                o.uv = TRANSFORM_TEX(i.uv, _FrostTexture);
+                o.uvFrostTex = TRANSFORM_TEX(i.uv, _FrostTexture);
+                o.uvMaskTex = TRANSFORM_TEX(i.uv, _MaskTexture);
                 o.uvBluredTex = ComputeScreenPos(o.positionCS);
 
                 return o;
@@ -69,8 +79,10 @@ Shader "MyFrostedGlass"
             half4 frag(Varings i) : SV_Target
             {
                 
-                float surfSmooth = 1 - SAMPLE_TEXTURE2D(_FrostTexture, sampler_FrostTexture, i.uv).x * _FrostIntensity;
+                float surfSmooth = 1 - SAMPLE_TEXTURE2D(_FrostTexture, sampler_FrostTexture, i.uvFrostTex).x * _FrostIntensity;
                 surfSmooth = clamp(0, 1, surfSmooth);
+
+                half4 mask = SAMPLE_TEXTURE2D(_MaskTexture, sampler_MaskTexture, i.uvMaskTex);
 
                 half4 ref00 = SAMPLE_TEXTURE2D(_BluredTexture0, sampler_BluredTexture0, i.uvBluredTex.xy / i.uvBluredTex.w);
                 
@@ -83,7 +95,9 @@ Shader "MyFrostedGlass"
                 float step02 = smoothstep(0.05, 0.5, surfSmooth);
                 float step03 = smoothstep(0.00, 0.05, surfSmooth);
 
-                return lerp(ref03, lerp(lerp(lerp(ref03, ref02, step02), ref01, step01), ref00, step00), step03);
+                half4 color = lerp(ref03, lerp(lerp(lerp(ref03, ref02, step02), ref01, step01), ref00, step00), step03);
+                
+                return half4(color.x,color.y,color.z,mask.x);
             }
             ENDHLSL  //ENDCG          
         }
