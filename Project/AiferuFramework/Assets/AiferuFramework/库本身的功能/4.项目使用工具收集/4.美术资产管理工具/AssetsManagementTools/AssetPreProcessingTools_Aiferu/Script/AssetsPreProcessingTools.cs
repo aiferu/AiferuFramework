@@ -32,17 +32,17 @@ namespace AiferuFramework.AssetsManagementTools
                 Directory.CreateDirectory(configAssetFilePath);
             }
             //当配置文件不存在时创建文件
-            if (!File.Exists(configAssetPath))
-            {
-                Debug.Log("创建配置文件");
-                CompiledAllJudgeMentConditionItemConfig compiledAllJudgeMentConditionItemConfig = ScriptableObject.CreateInstance<CompiledAllJudgeMentConditionItemConfig>();
-                //删除原有文件,生成新文件
-                AssetDatabase.DeleteAsset(configAssetPath);
-                Debug.Log(configAssetPath);
-                AssetDatabase.CreateAsset(compiledAllJudgeMentConditionItemConfig, configAssetPath);
-                AssetDatabase.Refresh();
-                Debug.Log("创建判断条件成功");
-            }
+            //if (!File.Exists(configAssetPath))
+            //{
+            //    Debug.Log("创建配置文件");
+            //    CompiledAllJudgeMentConditionItemConfig compiledAllJudgeMentConditionItemConfig = ScriptableObject.CreateInstance<CompiledAllJudgeMentConditionItemConfig>();
+            //    //删除原有文件,生成新文件
+            //    AssetDatabase.DeleteAsset(configAssetPath);
+            //    Debug.Log(configAssetPath);
+            //    AssetDatabase.CreateAsset(compiledAllJudgeMentConditionItemConfig, configAssetPath);
+            //    AssetDatabase.Refresh();
+            //    Debug.Log("创建判断条件成功");
+            //}
 
             //读取数据
             Debug.Log("读取配置文件");
