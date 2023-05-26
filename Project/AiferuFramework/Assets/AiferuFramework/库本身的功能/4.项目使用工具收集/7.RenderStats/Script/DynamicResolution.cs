@@ -56,6 +56,7 @@ namespace AiferuFramework.GameStats
             {
                 ScalableBufferManager.ResizeBuffers(m_widthScale, m_heightScale);
             }
+            
             DetermineResolution();
             int rezWidth = (int)Mathf.Ceil(ScalableBufferManager.widthScaleFactor * Screen.currentResolution.width);
             int rezHeight = (int)Mathf.Ceil(ScalableBufferManager.heightScaleFactor * Screen.currentResolution.height);
