@@ -10,25 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 75ed92a1050117743889e49cd4b1c19d, type: 3}
-  m_Name: NormalTextureData 1
+  m_Name: BakeryLightMapTextureData1
   m_EditorClassIdentifier: 
   enableTextureType: 1
-  TextureType: 1
-  MaxTextureSize: 256
+  TextureType: 6
+  MaxTextureSize: 2048
   EnableReadWrite: 0
-  EnableMipmap: 1
+  EnableMipmap: 0
   EnableMipMapStreaming: 0
-  AlphaSource: 0
+  AlphaSource: 1
   AlphaISTransParency: 0
   ForceFilterMode: 0
   FilterMode: 1
   AnisoLevel: 1
   ForceOverride: 1
-  Format: 48
+  Format: 49
   PCFormat: 29
   judgeMentConditionItemConfigs:
-  - {fileID: 11400000, guid: aa631e5ec5ea01f4997b4819b9a65283, type: 2}
-  - {fileID: 11400000, guid: 0841171b29db23d4a8f18af0d8c61ba7, type: 2}
-  - {fileID: 11400000, guid: 5deb29dba02e4ef418c20c59aa06e211, type: 2}
-  - {fileID: 11400000, guid: bf8d249914b59484c8053b33ccaccb49, type: 2}
-  priority: 3
+  - {fileID: 11400000, guid: bf57268e00824774a91fe844500dc493, type: 2}
+  - {fileID: 11400000, guid: d5562f54d0515e942846864696e8f343, type: 2}
+  priority: 1

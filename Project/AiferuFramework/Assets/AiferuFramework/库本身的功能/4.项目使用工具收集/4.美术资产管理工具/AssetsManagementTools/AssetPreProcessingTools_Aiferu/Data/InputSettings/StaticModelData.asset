@@ -18,7 +18,7 @@ MonoBehaviour:
   ImportVisibility: 0
   ImportCameras: 0
   ImportLight: 0
-  ReadWriteEnable: 1
+  ReadWriteEnable: 0
   SwapUVs: 0
   GenerateLightmapUVs: 1
   ModelImporterAnimationType: 0

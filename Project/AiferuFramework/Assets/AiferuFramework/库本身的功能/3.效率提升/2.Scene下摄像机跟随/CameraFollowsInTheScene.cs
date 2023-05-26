@@ -10,8 +10,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-using UnityEngine.PlayerLoop;
-using UnityEditor.Experimental.TerrainAPI;
 using System;
 
 namespace AiferuFramework

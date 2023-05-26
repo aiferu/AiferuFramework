@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enableTextureType: 1
   TextureType: 1
-  MaxTextureSize: 512
+  MaxTextureSize: 256
   EnableReadWrite: 0
   EnableMipmap: 1
   EnableMipMapStreaming: 0
@@ -25,6 +25,7 @@ MonoBehaviour:
   AnisoLevel: 1
   ForceOverride: 1
   Format: 48
+  PCFormat: 29
   judgeMentConditionItemConfigs:
   - {fileID: 11400000, guid: ca3e59895ec3c4943924c9cf640f4a80, type: 2}
   - {fileID: 11400000, guid: a5ac80dabdb0c0b4d88e0eb58a7b22ac, type: 2}
