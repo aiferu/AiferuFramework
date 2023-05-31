@@ -2,6 +2,8 @@
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
 using UnityEditor;
+using System.Collections.Generic;
+using System.Numerics;
 /// <summary>
 /// 美术刷草工具
 /// </summary>
@@ -15,9 +17,18 @@ public class PaintDetailsEW : EditorWindow
     private object scaleRandom;
     private int density;
 
+    private static GameObject[] Plants;
+    private static Texture[] TexObjects;
+
     [MenuItem("AiferuFramework/库本身的功能/4.项目使用工具收集/8.美术射线刷草工具Bata", false, 4008)]
     static void Open()
     {
+        Plants = new GameObject[6];
+        TexObjects = new Texture[6];
+        for (int i = 0; i < 6; i++)
+        {
+            Plants[i] = null;
+        }
         var window = (PaintDetailsEW)EditorWindow.GetWindowWithRect(typeof(PaintDetailsEW), new Rect(0, 0, 386, 320), false, "Paint Detail");
         window.Show();
         Enable = true;
@@ -43,11 +54,11 @@ public class PaintDetailsEW : EditorWindow
         {
             for (int i = 0; i < 6; i++)
             {
-                //if (Plants[i] == null)
-                //{
-                //    Plants[i] = AddObject;
-                //    break;
-                //}
+                if (Plants[i] == null)
+                {
+                    Plants[i] = AddObject;
+                   break;
+                }
             }
         }
 
@@ -58,15 +69,15 @@ public class PaintDetailsEW : EditorWindow
 
         for (int i = 0; i < 6; i++)
         {
-            //if (Plants[i] != null)
-            //    TexObjects[i] = AssetPreview.GetAssetPreview(Plants[i]) as Texture;
-            //else TexObjects[i] = null;
+            if (Plants[i] != null)
+                TexObjects[i] = AssetPreview.GetAssetPreview(Plants[i]) as Texture;
+            else TexObjects[i] = null;
         }
 
         GUILayout.BeginHorizontal();
         GUILayout.FlexibleSpace();
         GUILayout.BeginVertical("box", GUILayout.Width(347));
-       // PlantSelect = GUILayout.SelectionGrid(PlantSelect, TexObjects, 6, "gridlist", GUILayout.Width(330), GUILayout.Height(55));
+        PlantSelect = GUILayout.SelectionGrid(PlantSelect, TexObjects, 6, "gridlist", GUILayout.Width(330), GUILayout.Height(55));
 
         GUILayout.BeginHorizontal();
 
