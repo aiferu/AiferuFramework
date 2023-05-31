@@ -78,7 +78,6 @@ namespace AiferuFramework.ArtBrushTool
         {
             SaveData();
             Enable = false;
-            BrushEnable = false;
             Debug.Log("ArtBrushTool¹Ø±Õ");
         }
 
