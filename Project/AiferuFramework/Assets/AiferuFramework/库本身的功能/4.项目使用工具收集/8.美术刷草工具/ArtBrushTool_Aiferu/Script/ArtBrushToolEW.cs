@@ -57,11 +57,26 @@ namespace AiferuFramework.ArtBrushTool
         /// 草对象缩略图数组
         /// </summary>
         private static Texture[] TexObjects;
+        /// <summary>
+        /// 数据存储
+        /// </summary>
+        private static ArtBrushToolData data ;
         #endregion
 
         [MenuItem("AiferuFramework/库本身的功能/4.项目使用工具收集/8.美术射线刷草工具Bata %g", false, 4008)]
         static void Open()
         {
+            #region 窗口初始化
+            var window = (ArtBrushToolEW)EditorWindow.GetWindowWithRect(typeof(ArtBrushToolEW), new Rect(0, 0, 386, 320), false, "Paint Detail");
+            window.Show();
+
+            #endregion
+            Debug.Log(ArtBrushToolMain.ToolsDataSavePath);
+            Debug.Log("ArtBrushTool初始化成功");
+        }
+        private void Awake()
+        {
+            LoadData();
             #region 初始化
             Plants = new GameObject[PlantCount];
             TexObjects = new Texture[PlantCount];
@@ -69,18 +84,12 @@ namespace AiferuFramework.ArtBrushTool
             {
                 Plants[i] = null;
             }
-            #endregion
-            #region 窗口初始化
-            var window = (ArtBrushToolEW)EditorWindow.GetWindowWithRect(typeof(ArtBrushToolEW), new Rect(0, 0, 386, 320), false, "Paint Detail");
-            window.Show();
             Enable = true;
             #endregion
-
-            Debug.Log("ArtBrushTool初始化成功");
         }
-
         private void OnDisable()
         {
+            SaveData();
             Enable = false;
             Debug.Log("ArtBrushTool关闭");
         }
@@ -109,7 +118,7 @@ namespace AiferuFramework.ArtBrushTool
             GUILayout.BeginHorizontal();
             GUILayout.Label("Add Assets", GUILayout.Width(125));
 
-            AddObject = (GameObject)EditorGUILayout.ObjectField("", AddObject, typeof(GameObject), true, GUILayout.Width(160));
+            AddObject = (GameObject)EditorGUILayout.ObjectField("", AddObject, typeof(GameObject), false, GUILayout.Width(160));
 
             if (GUILayout.Button("+", GUILayout.Width(40)))
             {
@@ -182,12 +191,33 @@ namespace AiferuFramework.ArtBrushTool
         #region 存储数据
         private void SaveData()
         {
-
+            if(AssetDatabase.LoadAssetAtPath<ArtBrushToolData>(ArtBrushToolMain.ToolsDataSavePath)!=null)
+            {
+                AssetDatabase.DeleteAsset(ArtBrushToolMain.ToolsDataSavePath);
+            }
+            data = ScriptableObject.CreateInstance<ArtBrushToolData>();
+            data.ScaleRandomMin = scaleRandomMin;
+            data.ScaleRandomMax = scaleRandomMax;
+            data.Density = density;
+            data.BrushSize = brushSize;
+            data.PlantCount = PlantCount;
+            data.Plants = Plants;
+            AssetDatabase.CreateAsset(data, ArtBrushToolMain.ToolsDataSavePath);
+            EditorUtility.SetDirty(data);
+            AssetDatabase.SaveAssets();
+            AssetDatabase.Refresh();
         }
 
         private void LoadData()
         {
-            
+            data = AssetDatabase.LoadAssetAtPath<ArtBrushToolData>(ArtBrushToolMain.ToolsDataSavePath);
+            if (data == null) return;
+            scaleRandomMax = data.ScaleRandomMax;
+            scaleRandomMin = data.ScaleRandomMin;
+            density = data.Density;
+            brushSize = data.BrushSize;
+            PlantCount = data.PlantCount;
+            Plants = data.Plants;
         }
 
         #endregion

@@ -22,8 +22,8 @@ namespace AiferuFramework.ArtBrushTool
         {
             get
             {
-                return ToolsPath + "";
-;           }
+                return ToolsPath +"/Data/ArtBrushToolData.asset";           
+            }
         }
     }
 }
