@@ -14,7 +14,7 @@ public class PaintDetailsEW : EditorWindow
     private Transform CurrentSelect;
     private int PlantSelect;
     private int brushSize;
-    private object scaleRandom;
+    private float scaleRandom;
     private int density;
 
     private static GameObject[] Plants;
@@ -102,7 +102,7 @@ public class PaintDetailsEW : EditorWindow
         GUILayout.Label("Setting", GUILayout.Width(145));
         GUILayout.EndHorizontal();
         brushSize = (int)EditorGUILayout.Slider("Brush Size", brushSize, 1, 36);
-        //scaleRandom = EditorGUILayout.Slider("Scale Random(+/-)", scaleRandom, 0.05f, 1f);
+        scaleRandom = EditorGUILayout.Slider("Scale Random(+/-)", scaleRandom, 0.05f, 1f);
         density = (int)EditorGUILayout.Slider("Density", density, 1, 10);
         GUILayout.EndVertical();
         GUILayout.FlexibleSpace();
