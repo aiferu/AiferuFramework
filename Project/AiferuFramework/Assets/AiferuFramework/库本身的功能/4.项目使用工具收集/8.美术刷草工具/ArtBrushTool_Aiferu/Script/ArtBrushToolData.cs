@@ -25,7 +25,7 @@ namespace AiferuFramework.ArtBrushTool
         /// <summary>
         /// 画刷大小
         /// </summary>
-        public int BrushSize;
+        public float BrushSize;
         /// <summary>
         /// 草对象随机大小范围最大值
         /// </summary>

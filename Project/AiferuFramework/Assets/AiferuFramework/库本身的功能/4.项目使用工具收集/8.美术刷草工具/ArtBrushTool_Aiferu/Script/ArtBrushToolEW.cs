@@ -12,15 +12,17 @@ namespace AiferuFramework.ArtBrushTool
     /// </summary>
     public class ArtBrushToolEW : EditorWindow
     {
+        public static ArtBrushToolEW ins;
+
         #region 基础数据
         /// <summary>
         /// 工具是否启用
         /// </summary>
-        public static bool Enable;
+        public bool Enable;
         /// <summary>
         /// 是否开启笔刷
         /// </summary>
-        public static bool BrushEnable;
+        public bool BrushEnable;
         /// <summary>
         /// 添加的对象
         /// </summary>
@@ -32,15 +34,15 @@ namespace AiferuFramework.ArtBrushTool
         /// <summary>
         /// SelectionGrid组件中选中对象的序号,0开始
         /// </summary>
-        private int PlantSelect;
+        public int PlantSelect;
         /// <summary>
         /// 草对象缩略图数组
         /// </summary>
-        private static Texture[] TexObjects;
+        private Texture[] TexObjects;
         /// <summary>
         /// 数据存储
         /// </summary>
-        private static ArtBrushToolData data;
+        public ArtBrushToolData data;
 
         private static PaintDetailsEXtends paintDetailsEXtends;
         #endregion
@@ -49,8 +51,15 @@ namespace AiferuFramework.ArtBrushTool
         static void Open()
         {
             #region 窗口初始化
-            var window = (ArtBrushToolEW)EditorWindow.GetWindowWithRect(typeof(ArtBrushToolEW), new Rect(0, 0, 386, 320), false, "Paint Detail");
-            window.Show();
+            if (ins == null)
+            {
+                ins = (ArtBrushToolEW)EditorWindow.GetWindowWithRect(typeof(ArtBrushToolEW), new Rect(0, 0, 386, 320), false, "Paint Detail");
+            }else
+            {
+                ins.Focus();
+            }
+            ins.Show();
+
 
             #endregion
             Debug.Log("ArtBrushTool初始化成功");
@@ -151,7 +160,7 @@ namespace AiferuFramework.ArtBrushTool
             GUILayout.Label("Setting", GUILayout.Width(145));
             BrushEnable = GUILayout.Toggle(BrushEnable, "BrushEnable");
             GUILayout.EndHorizontal();
-            data.BrushSize = (int)EditorGUILayout.Slider("Brush Size", data.BrushSize, 1, 36);
+            data.BrushSize = EditorGUILayout.Slider("Brush Size", data.BrushSize, 0.1f, 36f);
             GUILayout.Label("ScaleRandom", GUILayout.Width(145));
             data.ScaleRandomMin = EditorGUILayout.Slider("Scale RandomMin", data.ScaleRandomMin, 0.05f, 1.5f);
             data.ScaleRandomMax = EditorGUILayout.Slider("Scale RandomMax", data.ScaleRandomMax, 0.05f, 1.5f);
