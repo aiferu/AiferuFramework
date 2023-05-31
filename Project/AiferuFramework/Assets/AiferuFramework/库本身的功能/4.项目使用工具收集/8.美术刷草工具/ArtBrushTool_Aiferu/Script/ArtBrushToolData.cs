@@ -18,18 +18,32 @@ namespace AiferuFramework.ArtBrushTool
     [CreateAssetMenu(fileName = "ArtBrushToolData", menuName = "cs",order = 7)]
     public class ArtBrushToolData : ScriptableObject
     {
-        //需要存储的数据
-        //1.BrushSize 画刷大小
+        /// <summary>
+        /// 工具最大可添加对象数量
+        /// </summary>
+        public static int PlantCount = 6;
+        /// <summary>
+        /// 画刷大小
+        /// </summary>
         public int BrushSize;
-        //2.ScaleRandom 草对象随机大小范围
+        /// <summary>
+        /// 草对象随机大小范围最大值
+        /// </summary>
         public float ScaleRandomMax;
+        /// <summary>
+        /// 草对象随机大小范围最小值
+        /// </summary>
         public float ScaleRandomMin;
-        //3.Density 草密度
+        /// <summary>
+        /// 草密度
+        /// </summary>
         public int Density;
-        //4.Plant对象数组
-        public GameObject[] Plants;
-        //5.工具最大可添加对象个数
-        public int PlantCount;
+        /// <summary>
+        /// Plant对象数组
+        /// </summary>
+        public GameObject[] Plants = new GameObject[PlantCount];
+
+        
     }
 }
 #endif
