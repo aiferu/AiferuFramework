@@ -95,13 +95,14 @@ namespace AiferuFramework.ArtBrushTool
             {
                 //计算射线坐标
                 Vector2 randomPoint = UnityEngine.Random.insideUnitCircle * (ArtBrushToolEW.ins.data.BrushSize / 2);
-                Vector3 randomPoint3 = new Vector3(randomPoint.x,0, randomPoint.y) + hit.point;
+                Vector3 randomPoint3 = new Vector3(randomPoint.x, 0, randomPoint.y);
 
                 //绕法向量旋转坐标
-                //float
-                Vector3 newPos = randomPoint3;
+                //计算法向量与世界y轴的旋转
+                Quaternion rotation = Quaternion.FromToRotation(Vector3.up,hit.normal);
+                Vector3 newPos = rotation* randomPoint3+hit.point;
 
-                Ray ray = new Ray(newPos + hit.normal*Mathf.Clamp(ArtBrushToolEW.ins.data.BrushSize/2,0.1f,10f), -hit.normal);
+                Ray ray = new Ray(newPos + hit.normal*Mathf.Clamp(ArtBrushToolEW.ins.data.BrushSize/36,0.1f,10f), -hit.normal);
 
                 RaycastHit targetHit = new RaycastHit();
 
@@ -122,6 +123,8 @@ namespace AiferuFramework.ArtBrushTool
             GameObject go = PrefabUtility.InstantiatePrefab(target) as GameObject;
             go.transform.position = hit.point;
             go.transform.up = hit.normal;
+            float scale = UnityEngine.Random.Range(ArtBrushToolEW.ins.data.ScaleRandomMin, ArtBrushToolEW.ins.data.ScaleRandomMax);
+            go.transform.localScale = go.transform.localScale * scale;
         }
 
         /// <summary>
