@@ -42,8 +42,16 @@ namespace AiferuFramework.ArtBrushTool
         /// Plant对象数组
         /// </summary>
         public GameObject[] Plants = new GameObject[PlantCount];
+        /// <summary>
+        /// SelectionGrid组件中选中对象的序号,0开始
+        /// </summary>
+        public int PlantSelect;
+        /// <summary>
+        /// 笔刷是否是叠加模式(叠加与减去切换)
+        /// </summary>
+        public bool BrushIsAddMode = true;
 
-        
+
     }
 }
 #endif

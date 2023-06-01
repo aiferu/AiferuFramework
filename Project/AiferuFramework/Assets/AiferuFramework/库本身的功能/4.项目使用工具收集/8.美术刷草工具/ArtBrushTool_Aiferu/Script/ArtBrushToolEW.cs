@@ -30,11 +30,7 @@ namespace AiferuFramework.ArtBrushTool
         /// <summary>
         /// 当前选择的对象
         /// </summary>
-        private Transform CurrentSelect;
-        /// <summary>
-        /// SelectionGrid组件中选中对象的序号,0开始
-        /// </summary>
-        public int PlantSelect;
+        public Transform CurrentSelect;
         /// <summary>
         /// 草对象缩略图数组
         /// </summary>
@@ -134,7 +130,7 @@ namespace AiferuFramework.ArtBrushTool
             GUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();
             GUILayout.BeginVertical("box", GUILayout.Width(347));
-            PlantSelect = GUILayout.SelectionGrid(PlantSelect, TexObjects, ArtBrushToolData.PlantCount, "gridlist", GUILayout.Width(330), GUILayout.Height(55));
+            data.PlantSelect = GUILayout.SelectionGrid(data.PlantSelect, TexObjects, ArtBrushToolData.PlantCount, "gridlist", GUILayout.Width(330), GUILayout.Height(55));
 
             GUILayout.BeginHorizontal();
 
@@ -158,6 +154,7 @@ namespace AiferuFramework.ArtBrushTool
             GUILayout.BeginHorizontal();
             GUILayout.Label("Setting", GUILayout.Width(145));
             BrushEnable = GUILayout.Toggle(BrushEnable, "BrushEnable");
+            data.BrushIsAddMode = GUILayout.Toggle(data.BrushIsAddMode, "+/-");
             GUILayout.EndHorizontal();
             data.BrushSize = EditorGUILayout.Slider("Brush Size", data.BrushSize, 0.1f, 36f);
             GUILayout.Label("ScaleRandom", GUILayout.Width(145));
