@@ -49,7 +49,7 @@ namespace AiferuFramework.ArtBrushTool
             #region ´°¿Ú³õÊ¼»¯
             if (ins == null)
             {
-                ins = (ArtBrushToolEW)EditorWindow.GetWindowWithRect(typeof(ArtBrushToolEW), new Rect(0, 0, 386, 320), false, "Paint Detail");
+                ins = (ArtBrushToolEW)EditorWindow.GetWindowWithRect(typeof(ArtBrushToolEW), new Rect(0, 0, 386, 320), false, "ProfabPainter");
             }else
             {
                 ins.Focus();

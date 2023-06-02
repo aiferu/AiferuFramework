@@ -142,6 +142,7 @@ namespace AiferuFramework.ArtBrushTool
         private static void InsProfab(RaycastHit hit)
         {
             GameObject target = ArtBrushToolEW.ins.data.Plants[ArtBrushToolEW.ins.data.PlantSelect];
+            if (hit.point == Vector3.zero) return;
             if (target == null) return;
             if (ArtBrushToolEW.ins.data.MapDataObject == null)
             {
