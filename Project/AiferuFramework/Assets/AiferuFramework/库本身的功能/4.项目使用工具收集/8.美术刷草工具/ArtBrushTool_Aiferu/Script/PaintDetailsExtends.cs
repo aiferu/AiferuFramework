@@ -154,6 +154,15 @@ namespace AiferuFramework.ArtBrushTool
             go.transform.up = hit.normal;
             float scale = UnityEngine.Random.Range(ArtBrushToolEW.ins.data.ScaleRandomMin, ArtBrushToolEW.ins.data.ScaleRandomMax);
             go.transform.localScale = go.transform.localScale * scale;
+            Vector3 minRange = ArtBrushToolEW.ins.data.RotationMin; // 最小范围
+            Vector3 maxRange = ArtBrushToolEW.ins.data.RotationMax; // 最大范围
+            // 生成随机3维向量
+            Vector3 randomVector = new Vector3(
+                UnityEngine.Random.Range(minRange.x, maxRange.x),
+                UnityEngine.Random.Range(minRange.y, maxRange.y),
+                UnityEngine.Random.Range(minRange.z, maxRange.z)
+            );
+            go.transform.localRotation = Quaternion.Euler(randomVector);
         }
 
         /// <summary>

@@ -49,7 +49,7 @@ namespace AiferuFramework.ArtBrushTool
             #region 窗口初始化
             if (ins == null)
             {
-                ins = (ArtBrushToolEW)EditorWindow.GetWindowWithRect(typeof(ArtBrushToolEW), new Rect(0, 0, 386, 320), false, "ProfabPainter");
+                ins = (ArtBrushToolEW)EditorWindow.GetWindowWithRect(typeof(ArtBrushToolEW), new Rect(0, 0, 386, 400), false, "ProfabPainter");
             }else
             {
                 ins.Focus();
@@ -161,7 +161,14 @@ namespace AiferuFramework.ArtBrushTool
             GUILayout.Label("ScaleRandom", GUILayout.Width(145));
             data.ScaleRandomMin = EditorGUILayout.Slider("Scale RandomMin", data.ScaleRandomMin, 0.05f, 1.5f);
             data.ScaleRandomMax = EditorGUILayout.Slider("Scale RandomMax", data.ScaleRandomMax, 0.05f, 1.5f);
-            data.Density = (int)EditorGUILayout.Slider("Density", data.Density, 1, 30);
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("RotationRandom", GUILayout.Width(145));
+            GUILayout.BeginVertical();
+            ArtBrushToolEW.ins.data.RotationMin = EditorGUILayout.Vector3Field("", ArtBrushToolEW.ins.data.RotationMin, GUILayout.Width(145));
+            ArtBrushToolEW.ins.data.RotationMax = EditorGUILayout.Vector3Field("",ArtBrushToolEW.ins.data.RotationMax, GUILayout.Width(145));
+            GUILayout.EndVertical();
+            GUILayout.EndHorizontal();
+            data.Density = EditorGUILayout.Slider("Density", data.Density, 0.1f, 30f);
             if (GUILayout.Button("创建地图数据对象"))
             {
                 data.MapDataObject = new GameObject("MapData");
