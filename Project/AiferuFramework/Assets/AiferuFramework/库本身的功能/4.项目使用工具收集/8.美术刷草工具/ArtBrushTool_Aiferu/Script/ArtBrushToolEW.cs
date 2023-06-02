@@ -4,6 +4,7 @@ using UnityEngine.SocialPlatforms;
 using UnityEditor;
 using System.Collections.Generic;
 using System.Numerics;
+using UnityEditor.ShaderGraph.Internal;
 
 namespace AiferuFramework.ArtBrushTool
 {
@@ -152,9 +153,10 @@ namespace AiferuFramework.ArtBrushTool
             GUILayout.FlexibleSpace();
             GUILayout.BeginVertical("box", GUILayout.Width(347));
             GUILayout.BeginHorizontal();
-            GUILayout.Label("Setting", GUILayout.Width(145));
+            GUILayout.Label("Setting", GUILayout.Width(70));
             BrushEnable = GUILayout.Toggle(BrushEnable, "BrushEnable");
             data.BrushIsAddMode = GUILayout.Toggle(data.BrushIsAddMode, "+/-");
+            data.NeedCollider = GUILayout.Toggle(data.NeedCollider, "NeedCollider");
             GUILayout.EndHorizontal();
             data.BrushSize = EditorGUILayout.Slider("Brush Size", data.BrushSize, 0.1f, 36f);
             GUILayout.Label("ScaleRandom", GUILayout.Width(145));

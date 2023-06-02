@@ -1,7 +1,10 @@
 #if UNITY_EDITOR
+using SVTXPainterEditor;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Runtime.Serialization;
 using UnityEditor;
 using UnityEngine;
 using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
@@ -46,8 +49,19 @@ namespace AiferuFramework.ArtBrushTool
             //当鼠标左键点击时
             RaycastHit raycastHit = new RaycastHit();
             Ray terrainRay = HandleUtility.GUIPointToWorldRay(e.mousePosition);
-            //Debug.DrawLine(terrainRay.origin, terrainRay.GetPoint(100), Color.red);
-            if (Physics.Raycast(terrainRay, out raycastHit, Mathf.Infinity))
+            //Debug.DrawLine(terrainRay.origin, terrainRay.GetPoint(100), Color.red);\
+            bool isHit;
+            if (ArtBrushToolEW.ins.data.NeedCollider)
+            {
+                isHit = Physics.Raycast(terrainRay, out raycastHit, Mathf.Infinity);
+            }else
+            {
+                GameObject seletedObject = Selection.activeObject as GameObject;
+                MeshFilter meshFilter = FindMeshFilter(seletedObject);
+                if (meshFilter == null) return;
+                isHit =RXLookingGlass.IntersectRayMesh(terrainRay,meshFilter ,out raycastHit);
+            }
+            if (isHit)
             {
                 //根据鼠标划过位置和编辑器面板设置的密度等参数实例化植被 并打上标记
                 //实例化植被
@@ -105,8 +119,18 @@ namespace AiferuFramework.ArtBrushTool
                 Ray ray = new Ray(newPos + hit.normal*Mathf.Clamp(ArtBrushToolEW.ins.data.BrushSize/36,0.1f,10f), -hit.normal);
 
                 RaycastHit targetHit = new RaycastHit();
-
-                Physics.Raycast(ray, out targetHit, Mathf.Infinity);
+                if (ArtBrushToolEW.ins.data.NeedCollider)
+                {
+                    Physics.Raycast(ray, out targetHit, Mathf.Infinity);
+                }
+                else
+                {
+                    GameObject seletedObject = Selection.activeObject as GameObject;
+                    MeshFilter meshFilter = FindMeshFilter(seletedObject);
+                    if (meshFilter == null) return;
+                    RXLookingGlass.IntersectRayMesh(ray, meshFilter, out targetHit);
+                }
+                
                 Debug.DrawRay(ray.origin, ray.direction, Color.blue, 1f);
                 Debug.Log(randomPoint3);
                 Debug.Log(targetHit.point);
@@ -151,6 +175,53 @@ namespace AiferuFramework.ArtBrushTool
 
             }
 
+        }
+
+        private static MeshFilter FindMeshFilter(GameObject selectedObject)
+        {
+            if (selectedObject != null)
+            {
+                var meshFilter = FindMeshFilterInChildren(selectedObject);
+                if (meshFilter != null)
+                {
+                    // 找到了 MeshFilter 组件
+                    //Debug.Log("Found MeshFilter on: " + meshFilter.name);
+                    return meshFilter;
+                }
+                else
+                {
+                    // 没有找到 MeshFilter 组件
+                    //Debug.Log("No MeshFilter found in the selected object or its children.");
+                    return null;
+                }
+            }
+            else
+            {
+                // 没有选中对象
+                //Debug.Log("No object selected.");
+                return null;
+            }
+        }
+
+        private static MeshFilter FindMeshFilterInChildren(GameObject obj)
+        {
+            MeshFilter meshFilter = obj.GetComponent<MeshFilter>();
+            if (meshFilter != null)
+            {
+                return meshFilter;
+            }
+
+            // 遍历子对象
+            foreach (Transform child in obj.transform)
+            {
+                meshFilter = FindMeshFilterInChildren(child.gameObject);
+                if (meshFilter != null)
+                {
+                    return meshFilter;
+                }
+            }
+
+            return null;
         }
     }
 }

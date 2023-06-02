@@ -51,6 +51,8 @@ namespace AiferuFramework.ArtBrushTool
         /// </summary>
         public bool BrushIsAddMode = true;
 
+        public bool NeedCollider = true;
+
 
     }
 }
