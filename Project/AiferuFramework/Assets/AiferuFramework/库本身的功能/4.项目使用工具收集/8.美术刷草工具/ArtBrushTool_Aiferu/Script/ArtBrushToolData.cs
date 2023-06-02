@@ -51,9 +51,12 @@ namespace AiferuFramework.ArtBrushTool
         /// </summary>
         public bool BrushIsAddMode = true;
 
+        /// <summary>
+        /// 是否需要碰撞体
+        /// </summary>
         public bool NeedCollider = true;
 
-
+        public GameObject MapDataObject;
     }
 }
 #endif

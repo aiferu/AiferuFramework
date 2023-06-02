@@ -7,8 +7,6 @@ using System.ComponentModel;
 using System.Runtime.Serialization;
 using UnityEditor;
 using UnityEngine;
-using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
-using static UnityEngine.Experimental.TerrainAPI.TerrainUtility;
 
 namespace AiferuFramework.ArtBrushTool
 {
@@ -88,6 +86,7 @@ namespace AiferuFramework.ArtBrushTool
         /// </summary>
         private static void SubBrush(RaycastHit hit)
         {
+            Debug.Log("删除模式还tm没写,别瞎点");
             //区域射线
             for (int i = 0; i < ArtBrushToolEW.ins.data.Density * ArtBrushToolEW.ins.data.BrushSize; i++)
             {
@@ -95,7 +94,7 @@ namespace AiferuFramework.ArtBrushTool
                 Vector3 randomPoint3 = new Vector3(randomPoint.x, 0, randomPoint.y) + hit.point;
                 Ray ray = new Ray(randomPoint3, hit.normal);
                 Handles.DrawLine(randomPoint3, randomPoint3 + (hit.normal * ArtBrushToolEW.ins.data.BrushSize / 2));
-                Debug.Log(randomPoint3);
+                //Debug.Log(randomPoint3);
             }
         }
 
@@ -105,7 +104,7 @@ namespace AiferuFramework.ArtBrushTool
         private static void AddBrush(RaycastHit hit)
         {
             //区域射线
-            for (int i = 0; i < ArtBrushToolEW.ins.data.Density * ArtBrushToolEW.ins.data.BrushSize; i++)
+            for (int i = 0; i <Mathf.Clamp(ArtBrushToolEW.ins.data.Density * Mathf.Pow(ArtBrushToolEW.ins.data.BrushSize/2,2)*Mathf.PI,1f,30520f); i++)
             {
                 //计算射线坐标
                 Vector2 randomPoint = UnityEngine.Random.insideUnitCircle * (ArtBrushToolEW.ins.data.BrushSize / 2);
@@ -132,8 +131,8 @@ namespace AiferuFramework.ArtBrushTool
                 }
                 
                 Debug.DrawRay(ray.origin, ray.direction, Color.blue, 1f);
-                Debug.Log(randomPoint3);
-                Debug.Log(targetHit.point);
+                //Debug.Log(randomPoint3);
+                //Debug.Log(targetHit.point);
                 InsProfab(targetHit);
             }
 
@@ -144,7 +143,12 @@ namespace AiferuFramework.ArtBrushTool
         {
             GameObject target = ArtBrushToolEW.ins.data.Plants[ArtBrushToolEW.ins.data.PlantSelect];
             if (target == null) return;
-            GameObject go = PrefabUtility.InstantiatePrefab(target) as GameObject;
+            if (ArtBrushToolEW.ins.data.MapDataObject == null)
+            {
+                Debug.Log("大哥,先创建地图数据对象!!!!");
+                return;
+            }
+            GameObject go = PrefabUtility.InstantiatePrefab(target,ArtBrushToolEW.ins.data.MapDataObject.transform) as GameObject;
             go.transform.position = hit.point;
             go.transform.up = hit.normal;
             float scale = UnityEngine.Random.Range(ArtBrushToolEW.ins.data.ScaleRandomMin, ArtBrushToolEW.ins.data.ScaleRandomMax);

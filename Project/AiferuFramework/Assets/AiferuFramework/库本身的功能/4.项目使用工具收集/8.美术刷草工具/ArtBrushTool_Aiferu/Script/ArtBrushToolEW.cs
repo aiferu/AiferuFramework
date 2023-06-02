@@ -4,7 +4,6 @@ using UnityEngine.SocialPlatforms;
 using UnityEditor;
 using System.Collections.Generic;
 using System.Numerics;
-using UnityEditor.ShaderGraph.Internal;
 
 namespace AiferuFramework.ArtBrushTool
 {
@@ -162,7 +161,15 @@ namespace AiferuFramework.ArtBrushTool
             GUILayout.Label("ScaleRandom", GUILayout.Width(145));
             data.ScaleRandomMin = EditorGUILayout.Slider("Scale RandomMin", data.ScaleRandomMin, 0.05f, 1.5f);
             data.ScaleRandomMax = EditorGUILayout.Slider("Scale RandomMax", data.ScaleRandomMax, 0.05f, 1.5f);
-            data.Density = (int)EditorGUILayout.Slider("Density", data.Density, 1, 10);
+            data.Density = (int)EditorGUILayout.Slider("Density", data.Density, 1, 30);
+            if (GUILayout.Button("创建地图数据对象"))
+            {
+                data.MapDataObject = new GameObject("MapData");
+            }
+            if (GUILayout.Button("设置为地图数据对象"))
+            {
+                data.MapDataObject = Selection.activeGameObject;
+            }
             GUILayout.EndVertical();
             GUILayout.FlexibleSpace();
             GUILayout.EndHorizontal();
