@@ -18,14 +18,14 @@ MonoBehaviour:
     loadType: 0
     sampleRateSetting: 2
     sampleRateOverride: 22050
-    compressionFormat: 1
+    compressionFormat: 2
     quality: 1
     conversionMode: 0
   IosSampleSettings:
     loadType: 0
     sampleRateSetting: 2
     sampleRateOverride: 22050
-    compressionFormat: 1
+    compressionFormat: 2
     quality: 1
     conversionMode: 0
   judgeMentConditionItemConfigs:

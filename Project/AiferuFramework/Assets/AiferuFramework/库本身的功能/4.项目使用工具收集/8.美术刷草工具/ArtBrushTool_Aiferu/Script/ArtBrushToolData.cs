@@ -21,7 +21,7 @@ namespace AiferuFramework.ArtBrushTool
         /// <summary>
         /// 工具最大可添加对象数量
         /// </summary>
-        public static int PlantCount = 6;
+        public static int PlantCount = 12;
         /// <summary>
         /// 画刷大小
         /// </summary>

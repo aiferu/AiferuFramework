@@ -12,20 +12,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81be5d2ff60bd2749888c6ce8173969f, type: 3}
   m_Name: ArtBrushToolData
   m_EditorClassIdentifier: 
-  BrushSize: 10.5
-  ScaleRandomMax: 1
-  ScaleRandomMin: 1
-  Density: 30
+  BrushSize: 0.1
+  ScaleRandomMax: 1.35
+  ScaleRandomMin: 0.05
+  Density: 0.1
   Plants:
-  - {fileID: 3597701555119177608, guid: a0ca6c84ae8165a4ba6313baf89154ec, type: 3}
-  - {fileID: 919132149155446097, guid: 5969bccc9783f2d4094843f139500069, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1034290309928683551, guid: 174a365040822e9439c8636955762fb1, type: 3}
+  - {fileID: 1034290309928683551, guid: 174a365040822e9439c8636955762fb1, type: 3}
+  - {fileID: 1034290309928683551, guid: 174a365040822e9439c8636955762fb1, type: 3}
+  - {fileID: 1034290309928683551, guid: 174a365040822e9439c8636955762fb1, type: 3}
+  - {fileID: 1034290309928683551, guid: 174a365040822e9439c8636955762fb1, type: 3}
+  - {fileID: 1034290309928683551, guid: 174a365040822e9439c8636955762fb1, type: 3}
+  - {fileID: 1034290309928683551, guid: 174a365040822e9439c8636955762fb1, type: 3}
+  - {fileID: 1034290309928683551, guid: 174a365040822e9439c8636955762fb1, type: 3}
+  - {fileID: 1034290309928683551, guid: 174a365040822e9439c8636955762fb1, type: 3}
+  - {fileID: 1034290309928683551, guid: 174a365040822e9439c8636955762fb1, type: 3}
+  - {fileID: 1034290309928683551, guid: 174a365040822e9439c8636955762fb1, type: 3}
+  - {fileID: 1034290309928683551, guid: 174a365040822e9439c8636955762fb1, type: 3}
   PlantSelect: 0
   BrushIsAddMode: 1
   NeedCollider: 1
   MapDataObject: {fileID: 0}
-  RotationMax: {x: 0, y: 360, z: 0}
+  RotationMax: {x: 0, y: 0, z: 0}
   RotationMin: {x: 0, y: 0, z: 0}

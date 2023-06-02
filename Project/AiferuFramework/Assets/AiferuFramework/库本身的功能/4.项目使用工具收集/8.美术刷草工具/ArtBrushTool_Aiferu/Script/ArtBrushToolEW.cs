@@ -49,7 +49,7 @@ namespace AiferuFramework.ArtBrushTool
             #region ´°¿Ú³õÊ¼»¯
             if (ins == null)
             {
-                ins = (ArtBrushToolEW)EditorWindow.GetWindowWithRect(typeof(ArtBrushToolEW), new Rect(0, 0, 386, 400), false, "ProfabPainter");
+                ins = (ArtBrushToolEW)EditorWindow.GetWindowWithRect(typeof(ArtBrushToolEW), new Rect(0, 0, 700, 400), false, "ProfabPainter");
             }else
             {
                 ins.Focus();
@@ -97,11 +97,11 @@ namespace AiferuFramework.ArtBrushTool
             GUILayout.Space(20);
             GUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();
-            GUILayout.BeginVertical("box", GUILayout.Width(347));
+            GUILayout.BeginVertical("box", GUILayout.Width(668));
             GUILayout.BeginHorizontal();
             GUILayout.Label("Add Assets", GUILayout.Width(125));
 
-            AddObject = (GameObject)EditorGUILayout.ObjectField("", AddObject, typeof(GameObject), false, GUILayout.Width(160));
+            AddObject = (GameObject)EditorGUILayout.ObjectField("", AddObject, typeof(GameObject), false, GUILayout.Width(480));
 
             if (GUILayout.Button("+", GUILayout.Width(40)))
             {
@@ -129,8 +129,23 @@ namespace AiferuFramework.ArtBrushTool
 
             GUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();
-            GUILayout.BeginVertical("box", GUILayout.Width(347));
-            data.PlantSelect = GUILayout.SelectionGrid(data.PlantSelect, TexObjects, ArtBrushToolData.PlantCount, "gridlist", GUILayout.Width(330), GUILayout.Height(55));
+            GUILayout.BeginVertical("box", GUILayout.Width(660));
+            data.PlantSelect = GUILayout.SelectionGrid(data.PlantSelect, TexObjects, ArtBrushToolData.PlantCount, "gridlist", GUILayout.Width(660), GUILayout.Height(55));
+
+            GUILayout.BeginHorizontal();
+            for (int i = 0; i < ArtBrushToolData.PlantCount; i++)
+            {
+                if (data.Plants[i]!=null)
+                {
+                     GUILayout.Button(data.Plants[i].name, GUILayout.Width(52));
+                }else
+                {
+                    GUILayout.Button("null", GUILayout.Width(52));
+                }
+                
+                
+            }
+            GUILayout.EndHorizontal();
 
             GUILayout.BeginHorizontal();
 
@@ -150,7 +165,7 @@ namespace AiferuFramework.ArtBrushTool
 
             GUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();
-            GUILayout.BeginVertical("box", GUILayout.Width(347));
+            GUILayout.BeginVertical("box", GUILayout.Width(668));
             GUILayout.BeginHorizontal();
             GUILayout.Label("Setting", GUILayout.Width(70));
             BrushEnable = GUILayout.Toggle(BrushEnable, "BrushEnable");
