@@ -39,8 +39,6 @@ namespace AiferuFramework.ArtBrushTool
         /// 数据存储
         /// </summary>
         public ArtBrushToolData data;
-
-        private static PaintDetailsEXtends paintDetailsEXtends;
         #endregion
 
         [MenuItem("AiferuFramework/库本身的功能/4.项目使用工具收集/8.美术射线刷草工具Bata %g", false, 4008)]
@@ -67,7 +65,6 @@ namespace AiferuFramework.ArtBrushTool
             TexObjects = new Texture[ArtBrushToolData.PlantCount];
             Enable = true;
             Debug.Log(Enable);
-            paintDetailsEXtends = new PaintDetailsEXtends();
             #endregion
         }
         private void OnDisable()

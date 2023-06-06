@@ -30,8 +30,14 @@ namespace AiferuFramework.ArtBrushTool
         //Scene面板回调函数
         static void OnSceneGUI(SceneView view)
         {
+            Event e = Event.current;
+
             if (ArtBrushToolEW.ins == null)
                 return;
+            if (e.alt)
+            {
+                return;
+            }
             //判断是否开启了美术刷草工具
             if (ArtBrushToolEW.ins.Enable)
             {
@@ -103,6 +109,8 @@ namespace AiferuFramework.ArtBrushTool
         /// </summary>
         private static void AddBrush(RaycastHit hit)
         {
+            //撤回开始
+            Undo.IncrementCurrentGroup();
             //区域射线
             for (int i = 0; i <Mathf.Clamp(ArtBrushToolEW.ins.data.Density * Mathf.Pow(ArtBrushToolEW.ins.data.BrushSize/2,2)*Mathf.PI,1f,30520f); i++)
             {
@@ -136,7 +144,7 @@ namespace AiferuFramework.ArtBrushTool
                 InsProfab(targetHit);
             }
 
-            
+            //撤回结束
         }
 
         private static void InsProfab(RaycastHit hit)
@@ -163,6 +171,9 @@ namespace AiferuFramework.ArtBrushTool
                 UnityEngine.Random.Range(minRange.z, maxRange.z)
             );
             go.transform.localRotation = Quaternion.Euler(randomVector);
+
+            //撤回结束
+            Undo.RegisterCreatedObjectUndo(go, "Create " + go.name);
         }
 
         /// <summary>
