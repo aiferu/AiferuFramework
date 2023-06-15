@@ -83,28 +83,28 @@ namespace AiferuFramework.AssetsManagementTools
             if (modelImporter.importAnimation == true)
             {
                 //保证所有的动画片段的名称与其模型统一
-                List<ModelImporterClipAnimation> actions = new List<ModelImporterClipAnimation>();
-                ModelImporterClipAnimation anim = modelImporter.defaultClipAnimations[0];
-                anim.name = go.name;
+                //List<ModelImporterClipAnimation> actions = new List<ModelImporterClipAnimation>();
+                //ModelImporterClipAnimation anim = modelImporter.defaultClipAnimations[0];
+                //anim.name = go.name;
 
-                //当动画类型为需要循环时
-                for (int i = 0; i < ConfigAsset.loopAnimationName.Count; i++)
-                {
-                    Debug.Log(anim.name);
-                    if (go.name.ToUpper().Contains(ConfigAsset.loopAnimationName[i].ToUpper()))
-                    {
-                        Debug.Log("循环动画:" + go.name);
-                        anim.loopTime = true;
-                        break;
+                ////当动画类型为需要循环时
+                //for (int i = 0; i < ConfigAsset.loopAnimationName.Count; i++)
+                //{
+                //    Debug.Log(anim.name);
+                //    if (go.name.ToUpper().Contains(ConfigAsset.loopAnimationName[i].ToUpper()))
+                //    {
+                //        Debug.Log("循环动画:" + go.name);
+                //        anim.loopTime = true;
+                //        break;
 
-                    }
-                }
-                Debug.Log("保存循环");
-                actions.Add(anim);
-                modelImporter.clipAnimations = actions.ToArray();
-                AssetDatabase.Refresh();
-                AssetDatabase.SaveAssets();
-                modelImporter.SaveAndReimport();
+                //    }
+                //}
+                //Debug.Log("保存循环");
+                //actions.Add(anim);
+                //modelImporter.clipAnimations = actions.ToArray();
+                //AssetDatabase.Refresh();
+                //AssetDatabase.SaveAssets();
+                //modelImporter.SaveAndReimport();
 
 
 
