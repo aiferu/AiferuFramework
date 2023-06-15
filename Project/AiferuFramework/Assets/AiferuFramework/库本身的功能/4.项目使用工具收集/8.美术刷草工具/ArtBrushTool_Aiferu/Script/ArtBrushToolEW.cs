@@ -134,7 +134,7 @@ namespace AiferuFramework.ArtBrushTool
             {
                 if (data.Plants[i]!=null)
                 {
-                     GUILayout.Button(data.Plants[i].name, GUILayout.Width(52));
+                     GUILayout.Button(data.Plants[i].name.Substring(Mathf.Max(data.Plants[i].name.Length-7,0),Mathf.Min(7, data.Plants[i].name.Length)), GUILayout.Width(52));
                 }else
                 {
                     GUILayout.Button("null", GUILayout.Width(52));

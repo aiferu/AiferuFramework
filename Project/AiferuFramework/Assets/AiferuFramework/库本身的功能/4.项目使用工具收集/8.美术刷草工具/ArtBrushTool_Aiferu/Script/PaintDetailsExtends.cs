@@ -7,12 +7,15 @@ using System.ComponentModel;
 using System.Runtime.Serialization;
 using UnityEditor;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 namespace AiferuFramework.ArtBrushTool
 {
     [InitializeOnLoad]
     public class PaintDetailsEXtends
     {
+        private static GameObject PreviewModel;
+
         private static int layerMask =0;
         #region 绑定场景GUI渲染回调
         static PaintDetailsEXtends()
@@ -65,6 +68,9 @@ namespace AiferuFramework.ArtBrushTool
                 if (meshFilter == null) return;
                 isHit =RXLookingGlass.IntersectRayMesh(terrainRay,meshFilter ,out raycastHit);
             }
+            //生成预览模型
+            GameObject target = ArtBrushToolEW.ins.data.Plants[ArtBrushToolEW.ins.data.PlantSelect];
+            target.transform.position = raycastHit.point;
             if (isHit)
             {
                 //根据鼠标划过位置和编辑器面板设置的密度等参数实例化植被 并打上标记
