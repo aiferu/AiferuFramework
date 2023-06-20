@@ -32,7 +32,6 @@ namespace AiferuFramework
         public bool EnableOpaqueTexture;
         public bool EnableHDR;
         public bool EnableSRPBatcher;
-        public bool UseSRPBatcher;
         public MsaaQuality MSAASampleCount;
     }
 
