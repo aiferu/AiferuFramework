@@ -69,8 +69,8 @@ namespace AiferuFramework.ArtBrushTool
                 isHit =RXLookingGlass.IntersectRayMesh(terrainRay,meshFilter ,out raycastHit);
             }
             //生成预览模型
-            GameObject target = ArtBrushToolEW.ins.data.Plants[ArtBrushToolEW.ins.data.PlantSelect];
-            target.transform.position = raycastHit.point;
+            //GameObject target = ArtBrushToolEW.ins.data.Plants[ArtBrushToolEW.ins.data.PlantSelect];
+            //target.transform.position = raycastHit.point;
             if (isHit)
             {
                 //根据鼠标划过位置和编辑器面板设置的密度等参数实例化植被 并打上标记

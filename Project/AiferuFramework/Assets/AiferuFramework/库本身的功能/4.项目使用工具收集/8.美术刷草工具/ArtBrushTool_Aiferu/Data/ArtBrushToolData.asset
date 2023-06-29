@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81be5d2ff60bd2749888c6ce8173969f, type: 3}
   m_Name: ArtBrushToolData
   m_EditorClassIdentifier: 
-  BrushSize: 8.49
-  ScaleRandomMax: 1
-  ScaleRandomMin: 1
-  Density: 16.23
+  BrushSize: 0.1
+  ScaleRandomMax: 0.05
+  ScaleRandomMin: 0.05
+  Density: 0.1
   Plants:
   - {fileID: 0}
   - {fileID: 0}
@@ -24,7 +24,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 1034290309928683551, guid: 174a365040822e9439c8636955762fb1, type: 3}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
