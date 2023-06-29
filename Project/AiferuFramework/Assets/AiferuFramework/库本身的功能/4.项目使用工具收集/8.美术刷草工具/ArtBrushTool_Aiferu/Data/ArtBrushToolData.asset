@@ -17,18 +17,18 @@ MonoBehaviour:
   ScaleRandomMin: 1
   Density: 16.23
   Plants:
-  - {fileID: 3597701555119177608, guid: 97f8db4a3ec02f549991c01fb401d054, type: 3}
-  - {fileID: 919132149155446097, guid: 5969bccc9783f2d4094843f139500069, type: 3}
-  - {fileID: 5916365937240972947, guid: c3da64c29ae8a4e61a6bd072bad4e392, type: 3}
-  - {fileID: 98118275230426995, guid: 7db0554a46d7ad5498f0887ec9e85d02, type: 3}
-  - {fileID: 5916365937240972947, guid: c3da64c29ae8a4e61a6bd072bad4e392, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 1034290309928683551, guid: 174a365040822e9439c8636955762fb1, type: 3}
-  - {fileID: 1034290309928683551, guid: 174a365040822e9439c8636955762fb1, type: 3}
-  - {fileID: 1034290309928683551, guid: 174a365040822e9439c8636955762fb1, type: 3}
-  - {fileID: 1034290309928683551, guid: 174a365040822e9439c8636955762fb1, type: 3}
-  - {fileID: 1034290309928683551, guid: 174a365040822e9439c8636955762fb1, type: 3}
-  - {fileID: 1034290309928683551, guid: 174a365040822e9439c8636955762fb1, type: 3}
-  - {fileID: 1034290309928683551, guid: 174a365040822e9439c8636955762fb1, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   PlantSelect: 0
   BrushIsAddMode: 1
   NeedCollider: 1
