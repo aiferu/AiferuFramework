@@ -22,6 +22,7 @@ namespace AiferuFramework.AssetsManagementTools
         private static string[] artResourcesFolderNames = {
             "Material",
             "Mesh",
+            "Mesh/StaticMesh",
             "Mesh/Human",
             "Mesh/Human/Animation",
             "Mesh/NonHuman",
@@ -32,15 +33,15 @@ namespace AiferuFramework.AssetsManagementTools
             "Audio/LongSound",
             "Audio/Sound",
             "Audio/Background",
-            "Profab",
-            "Shaders",
+            "Prefab",
+            "Shader",
         };
 
         private static string[] ProjectFolderNames = {
-            "Scenes",
-            "Editor",
-            "GameResources",
-            "Script",
+            "00-ArtAssets",
+            "00-ArtAssets/1stArtAssets",
+            "00-ArtAssets/3rdArtAssets",
+            "01-Scenes",
         };
 
         #endregion
@@ -79,14 +80,13 @@ namespace AiferuFramework.AssetsManagementTools
         /// <summary>
         /// 创建项目默认文件夹
         /// </summary>
-        [MenuItem("AssetsTools/2001.创建项目默认文件夹", false, 2001)]
+        [MenuItem("AssetsTools/2001.创建项目美术资产目录文件夹", false, 2001)]
         private static void CreateProjectFolderFunc()
         {
-            //获取当前选中文件的路径
 
             string respath = Application.dataPath;
 
-            foreach (var resourcesFolderName in artResourcesFolderNames)
+            foreach (var resourcesFolderName in ProjectFolderNames)
             {
                 string path = respath + "/" + resourcesFolderName;
                 Debug.Log(path);
