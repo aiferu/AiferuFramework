@@ -12,7 +12,7 @@ namespace AiferuFramework
     {
         private static string GeneratePackageName()
         {
-            return "AiferuFramework_" + DateTime.Now.ToString("yyyyMMdd_HH_mm");
+            return "AFramework/AiferuFramework_" + DateTime.Now.ToString("yyyyMMdd_HH_mm");
         }
 
 #if UNITY_EDITOR
@@ -22,8 +22,18 @@ namespace AiferuFramework
         [MenuItem("AiferuFramework/库本身的功能/2.使用流程及优化/1.导出 UnityPackage %e", false, 2001)]
         static void MenuClicked1()
         {
+            string path = Path.Combine(Application.dataPath, "../AFramework/");
+            Debug.Log(path);
+            if (Directory.Exists(path))
+            {
+                Debug.Log("文件夹存在");
+            }else
+            {
+                Directory.CreateDirectory(path);
+                Debug.Log("文件夹创建成功");
+            }
             EditorUtil.ExportPackage("Assets/AiferuFramework", GeneratePackageName() + ".unitypackage");
-            EditorUtil.OpenInFolder(Path.Combine(Application.dataPath, "../"));
+            EditorUtil.OpenInFolder(path);
         }
 #endif
 
