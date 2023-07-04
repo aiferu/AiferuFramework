@@ -1,0 +1,10 @@
+库引用的第三方插件
+
+
+LWGUI(LightWeightShaderGUI)
+{
+	一个轻量, 灵活, 强大的Unity Shader GUI系统.
+	使用简洁的MaterialPropertyDrawer语法实现功能复杂的Shader GUI, 节省大量开发时间, 易于使用和扩展, 有效提升美术的使用体验.
+	安装需求:可选
+	地址:https://github.com/JasonMa0012/LWGUI
+}
