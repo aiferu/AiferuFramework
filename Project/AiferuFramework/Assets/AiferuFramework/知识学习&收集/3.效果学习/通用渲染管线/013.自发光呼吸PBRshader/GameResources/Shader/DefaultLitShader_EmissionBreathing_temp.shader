@@ -1,22 +1,10 @@
 // Made with Amplify Shader Editor v1.9.1.2
 // Available at the Unity Asset Store - http://u3d.as/y3X 
-Shader "Aiferu/URP/DefaultLitShader_EmissionBreathing"
+Shader "Aiferu/URP/DefaultLitShader_EmissionBreathing_temp"
 {
 	Properties
 	{
-		//需要复制的地方Start
-		[Main(Preset, _, on, off)] _PresetGroup ("Preset Samples", float) = 0
-		[Preset(Preset, LWGUI_BlendModePreset)] _BlendMode ("Blend Mode Preset", float) = 0
-		[SubEnum(Preset, UnityEngine.Rendering.CullMode)] _Cull ("Cull", Float) = 2
-		[SubEnum(Preset, UnityEngine.Rendering.BlendMode)] _SrcBlend ("SrcBlend", Float) = 1
-		[SubEnum(Preset, UnityEngine.Rendering.BlendMode)] _DstBlend ("DstBlend", Float) = 0
-		[SubToggle(Preset)] _ZWrite ("ZWrite ", Float) = 1
-		[SubEnum(Preset, UnityEngine.Rendering.CompareFunction)] _ZTest ("ZTest", Float) = 4 // 4 is LEqual
-		[SubEnum(Preset, RGBA, 15, RGB, 14)] _ColorMask ("ColorMask", Float) = 15 // 15 is RGBA (binary 1111)
-		//需要复制的地方End
-
-	    //需要复制的地方Start
-		[Main(SurfaceOptions,_,off,off)]_surfaceOptions ("SurfaceOptions", float) = 0
+			[Main(SurfaceOptions,_,off,off)]_surfaceOptions ("SurfaceOptions", float) = 0
 		[Sub(SurfaceOptions)]_AlphtClipThreshold("AlphtClipThreshold", Range( 0 , 1)) = 0
 
 		[Main(MainMaps,_,off,off)]_mainMaps ("MainMaps", float) = 0
@@ -60,9 +48,10 @@ Shader "Aiferu/URP/DefaultLitShader_EmissionBreathing"
 		[Main(EmissionBreathing,_KEYWORD,off,off)]_emissionBreathing ("EmissionBreathing", float) = 0
 		[SubToggle(EmissionBreathing,_EMISSIONBREATHINGENBALE_ON)] _EmissionBreathingEnbale("EmissionBreathingEnbale", Float) = 0
 		[Ramp(EmissionBreathing_EMISSIONBREATHINGENBALE_ON, EmissionBreathing, Assets.Art, 512)] _EmissionBreathingMask("EmissionBreathingMask", 2D) = "white" {}
+		//[Tex(EmissionBreathing_EMISSIONBREATHINGENBALE_ON)]_EmissionBreathingMask("EmissionBreathingMask", 2D) = "white" {}
 		[Sub(EmissionBreathing_EMISSIONBREATHINGENBALE_ON)]_BreathingSpeed("BreathingSpeed", Float) = 0.1
+		//以上有文件
 
-		//需要复制的地方End
 
 
 
@@ -87,7 +76,6 @@ Shader "Aiferu/URP/DefaultLitShader_EmissionBreathing"
 		[HideInInspector][ToggleOff] _SpecularHighlights("Specular Highlights", Float) = 1.0
 		[HideInInspector][ToggleOff] _EnvironmentReflections("Environment Reflections", Float) = 1.0
 		[HideInInspector][ToggleOff] _ReceiveShadows("Receive Shadows", Float) = 1.0
-
 	}
 
 	SubShader

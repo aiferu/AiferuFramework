@@ -8,25 +8,25 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: SHD_C0208Animal_DetectiveCat_aiStandardSurface
-  m_Shader: {fileID: 4800000, guid: 6edf23130cef90d4d86a4a004f5e9791, type: 3}
+  m_Shader: {fileID: 4800000, guid: 8df1b15c99812b24389f6859ff5d5a7f, type: 3}
   m_ShaderKeywords: _ALPHAMODULATE_ON _BLENDINGMODE_OFF _BLENDINGMODE_OPAQUE _CULL_FRONT
-    _DETAILINPUTSON_ON _DSTBLEND_ZERO _ISSMOOTHNESSMAP_ON _KEY1 _MARBLEND_MAR _MARMAPS_ON
-    _METALLICGLOSSMAP _SPECGLOSSMAP _SRCBLEND_ONE _SURFACETYPE_OPAQUE _TOGGLE_KEYWORD
+    _DSTBLEND_ZERO _ISSMOOTHNESSMAP_ON _KEY1 _MARBLEND_MAR _MARMAPS_ON _METALLICGLOSSMAP
+    _SPECGLOSSMAP _SRCBLEND_ONE _SURFACETYPE_OPAQUE _TOGGLE_KEYWORD _ZWRITE_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 2000
   stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 76d40f43818cc4a4aa77afd7b3e07e55, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 490ca1bfcbe5c94449ec3260c7d41c9e, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -42,15 +42,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionBreathingMask:
-        m_Texture: {fileID: 2800000, guid: ead830625f0b817408bee1978d7119b2, type: 3}
+        m_Texture: {fileID: 2800000, guid: b3921623c5197b343a029e4b311bd78e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
-        m_Texture: {fileID: 2800000, guid: f9161c6c9e06dc445ada3ee16d991f90, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MARBlendMap:
-        m_Texture: {fileID: 2800000, guid: 50c770365a1ee374eb981e71bee30cb0, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -65,10 +65,6 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _normal:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _texcoord:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -76,53 +72,39 @@ Material:
     m_Floats:
     - _AlphaCutoff: 0.5
     - _AlphtClipThreshold: 0
-    - _BlendingMode: 0
-    - _BreathingSpeed: 0.1
-    - _BumpScale: 0
+    - _BlendMode: 0
+    - _BreathingSpeed: 1
+    - _BumpScale: 1
+    - _ColorMask: 15
     - _Cull: 2
     - _DetailAlbedoMapScale: 1
-    - _DetailInputsOn: 1
+    - _DetailInputsOn: 0
     - _DetailNormalMapScale: 0
     - _DstBlend: 0
     - _EmissionBreathingEnbale: 0
     - _EnvironmentReflections: 1
     - _IsSmoothnessMap: 1
     - _MARBlend: 6
-    - _MARBlenddd: 0
-    - _MetallicStrength: 1
-    - _OcclusionStrength: 0.567
+    - _MetallicStrength: 0.5
+    - _OcclusionStrength: 1
+    - _PresetGroup: 0
     - _ReceiveShadows: 1
-    - _SmoothnessStrength: 1
+    - _SmoothnessStrength: 0.5
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _SurfaceType: 0
+    - _ZTest: 4
     - _ZWrite: 1
     - _detailInputs: 0
-    - _enum: 0
-    - _float: 0
-    - _float1: 0
-    - _float2: 0
-    - _float3: 0
-    - _g1: 0
-    - _group: 0
-    - _group1: 0
-    - _group2: 0
-    - _key1_Float1: 0
-    - _key2_Float2: 0
-    - _key3_Float3_Range: 0.348
-    - _key3_Float4_PowerSlider: 0.0006043701
+    - _emissionBreathing: 0
     - _mainMaps: 0
     - _marMaps: 0
     - _surfaceOptions: 0
-    - _toggle: 1
     m_Colors:
-    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 0}
     - _DetailOffset: {r: 0, g: 0, b: 0, a: 0}
     - _DetailTiling: {r: 1, g: 1, b: 0, a: 0}
-    - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
+    - _EmissionColor: {r: 1, g: 0, b: 0, a: 0}
     - _NormalDir: {r: 1, g: 1, b: 1, a: 0}
     - _Offset: {r: 0, g: 0, b: 0, a: 0}
     - _Tiling: {r: 1, g: 1, b: 0, a: 0}
-    - _color1: {r: 0.7, g: 0.7, b: 1, a: 1}
-    - _vector1: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
