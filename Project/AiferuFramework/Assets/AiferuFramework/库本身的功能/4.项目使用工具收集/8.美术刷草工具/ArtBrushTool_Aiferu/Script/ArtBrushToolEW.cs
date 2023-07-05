@@ -197,7 +197,8 @@ namespace AiferuFramework.ArtBrushTool
             GUILayout.FlexibleSpace();
             GUILayout.BeginVertical(GUILayout.Width(347));
 
-
+            //在Unity2023中会报错,所以加上这一句话
+            GUIUtility.ExitGUI();
         }
 
 
