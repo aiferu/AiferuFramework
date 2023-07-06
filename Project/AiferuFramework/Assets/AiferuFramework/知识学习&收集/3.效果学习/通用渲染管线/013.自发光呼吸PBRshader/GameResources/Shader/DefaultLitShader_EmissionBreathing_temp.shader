@@ -4,60 +4,37 @@ Shader "Aiferu/URP/DefaultLitShader_EmissionBreathing_temp"
 {
 	Properties
 	{
-			[Main(SurfaceOptions,_,off,off)]_surfaceOptions ("SurfaceOptions", float) = 0
-		[Sub(SurfaceOptions)]_AlphtClipThreshold("AlphtClipThreshold", Range( 0 , 1)) = 0
-
-		[Main(MainMaps,_,off,off)]_mainMaps ("MainMaps", float) = 0
-		[Tex(MainMaps,_BaseColor)] _BaseMap("Albedo", 2D) = "white" {}
-		[HideInInspector] _BaseColor("BaseColor", Color) = (1,1,1,0)
-		[Sub(MainMaps)]_Tiling("Tiling", Vector) = (1,1,0,0)
-		[Sub(MainMaps)]_Offset("Offset", Vector) = (0,0,0,0)
-		[Tex(MainMaps)][NORMAL]_BumpMap("NormalMap", 2D) = "bump" {}
-		[Sub(MainMaps)]_BumpScale("BumpScale", Range( 0 , 2)) = 1
-		[Sub(MainMaps)]_NormalDir("NormalDir", Vector) = (1,1,1,0)
-
-
-		[Main(MARMaps,_KEYWORD,off,off)]_marMaps ("MARMaps", float) = 0
-		[SubKeywordEnumDrawer(MARMaps,Normal,RAM,RMA,ARM,AMR,MRA,MAR)]
-		_MARBlend("MARBlend", float) = 6
-		[Tex(MARMaps)]_MARBlendMap("MARBlendMap", 2D) = "white" {}
-
-		[Tex(MARMaps_Normal)]_MetallicGlossMap("MetallicMap", 2D) = "white" {}
-		[Tex(MARMaps_Normal)]_SmoothnessMap("SmoothnessMap", 2D) = "white" {}
-		[Tex(MARMaps_Normal)]_OcclusionMap("OcclusionMap", 2D) = "white" {}
-		[SubToggle(MARMaps,_ISSMOOTHNESSMAP_ON)] _IsSmoothnessMap("IsSmoothnessMap", Float) = 1
-		[Sub(MARMaps)]_MetallicStrength("MetallicStrength", Range( 0 , 2)) = 0.5
-		[Sub(MARMaps)]_OcclusionStrength("OcclusionStrength", Range( 0 , 2)) = 1
-		[Sub(MARMaps)]_SmoothnessStrength("SmoothnessStrength", Range( 0 , 2)) = 0.5
-		[Tex(MARMaps,_EmissionColor)]_EmissionMap("EmissionMap", 2D) = "white" {}
-		[HideInInspector][HDR]_EmissionColor("EmissionColor", Color) = (0,0,0,0)
-
-
-		[Main(DetailInputs,_KEYWORD,off,off)]_detailInputs ("DetailInputs", float) = 0
-		[SubToggle(DetailInputs,_DETAILINPUTSON_ON)] _DetailInputsOn("DetailInputsOn", Float) = 0
-
-		[Tex(DetailInputs_DETAILINPUTSON_ON)] _DetailAlbedoMap("DetailAlbedoMap", 2D) = "black" {}
-		[Sub(DetailInputs_DETAILINPUTSON_ON)] _DetailAlbedoMapScale("DetailAlbedoMapScale", Range( 0 , 2)) = 1
-		[Tex(DetailInputs_DETAILINPUTSON_ON)] _DetailNormalMap("DetailNormalMap", 2D) = "bump" {}
-		[Sub(DetailInputs_DETAILINPUTSON_ON)] _DetailNormalMapScale("DetailNormalMapScale", Range( 0 , 2)) = 0
-		[Tex(DetailInputs_DETAILINPUTSON_ON)] _DetailMask("DetailMask", 2D) = "white" {}
-		[Sub(DetailInputs_DETAILINPUTSON_ON)] _DetailTiling("DetailTiling", Vector) = (1,1,0,0)
-		[Sub(DetailInputs_DETAILINPUTSON_ON)] _DetailOffset("DetailOffset", Vector) = (0,0,0,0)
-		
-
-		[Main(EmissionBreathing,_KEYWORD,off,off)]_emissionBreathing ("EmissionBreathing", float) = 0
-		[SubToggle(EmissionBreathing,_EMISSIONBREATHINGENBALE_ON)] _EmissionBreathingEnbale("EmissionBreathingEnbale", Float) = 0
-		[Ramp(EmissionBreathing_EMISSIONBREATHINGENBALE_ON, EmissionBreathing, Assets.Art, 512)] _EmissionBreathingMask("EmissionBreathingMask", 2D) = "white" {}
-		//[Tex(EmissionBreathing_EMISSIONBREATHINGENBALE_ON)]_EmissionBreathingMask("EmissionBreathingMask", 2D) = "white" {}
-		[Sub(EmissionBreathing_EMISSIONBREATHINGENBALE_ON)]_BreathingSpeed("BreathingSpeed", Float) = 0.1
-		//以上有文件
-
-
-
-
-		//不知道是啥
-		[HideInInspector] _texcoord( "", 2D ) = "white" {}
 		[HideInInspector] _AlphaCutoff("Alpha Cutoff ", Range(0, 1)) = 0.5
+		_BaseMap("Albedo", 2D) = "white" {}
+		_Tiling("Tiling", Vector) = (1,1,0,0)
+		_DetailTiling("DetailTiling", Vector) = (1,1,0,0)
+		_Offset("Offset", Vector) = (0,0,0,0)
+		_DetailOffset("DetailOffset", Vector) = (0,0,0,0)
+		_BaseColor("BaseColor", Color) = (1,1,1,0)
+		_SmoothnessMap("SmoothnessMap", 2D) = "white" {}
+		_SmoothnessStrength("SmoothnessStrength", Range( 0 , 2)) = 0.5
+		_BumpMap("NormalMap", 2D) = "bump" {}
+		_DetailNormalMap("DetailNormalMap", 2D) = "bump" {}
+		_NormalDir("NormalDir", Vector) = (1,1,1,0)
+		_DetailNormalMapScale("DetailNormalMapScale", Range( 0 , 2)) = 0
+		_BumpScale("BumpScale", Range( 0 , 2)) = 1
+		_OcclusionMap("OcclusionMap", 2D) = "white" {}
+		_OcclusionStrength("OcclusionStrength", Range( 0 , 2)) = 1
+		_EmissionMap("EmissionMap", 2D) = "white" {}
+		[HDR]_EmissionColor("EmissionColor", Color) = (0,0,0,0)
+		[Toggle(_ISSMOOTHNESSMAP_ON)] _IsSmoothnessMap("IsSmoothnessMap", Float) = 1
+		[KeywordEnum(Normal,RAM,RMA,ARM,AMR,MRA,MAR)] _MARBlend("MARBlend", Float) = 6
+		_MARBlendMap("MARBlendMap", 2D) = "white" {}
+		_AlphtClipThreshold("AlphtClipThreshold", Range( 0 , 1)) = 0
+		_DetailAlbedoMap("DetailAlbedoMap", 2D) = "black" {}
+		_DetailMask("DetailMask", 2D) = "white" {}
+		_DetailAlbedoMapScale("DetailAlbedoMapScale", Range( 0 , 2)) = 1
+		[Toggle(_DETAILINPUTSON_ON)] _DetailInputsOn("DetailInputsOn", Float) = 0
+		_EmissionBreathingMask("EmissionBreathingMask", 2D) = "white" {}
+		[Toggle(_EMISSIONBREATHINGENBALE_ON)] _EmissionBreathingEnbale("EmissionBreathingEnbale", Float) = 0
+		[ASEEnd]_BreathingSpeed("BreathingSpeed", Float) = 0.1
+		[HideInInspector] _texcoord( "", 2D ) = "white" {}
+
 
 		//_TransmissionShadow( "Transmission Shadow", Range( 0, 1 ) ) = 0.5
 		//_TransStrength( "Trans Strength", Range( 0, 50 ) ) = 1
@@ -84,7 +61,7 @@ Shader "Aiferu/URP/DefaultLitShader_EmissionBreathing_temp"
 
 		
 
-		Tags { "RenderPipeline"="UniversalPipeline" "RenderType"="Opaque" "Queue"="Geometry" }
+		Tags { "RenderPipeline"="UniversalPipeline" "RenderType"="Transparent" "Queue"="Transparent" }
 
 		Cull Back
 		ZWrite On
@@ -209,8 +186,8 @@ Shader "Aiferu/URP/DefaultLitShader_EmissionBreathing_temp"
 			Name "Forward"
 			Tags { "LightMode"="UniversalForward" }
 
-			Blend One Zero, One Zero
-			ZWrite On
+			Blend One OneMinusSrcAlpha, One OneMinusSrcAlpha
+			ZWrite Off
 			ZTest LEqual
 			Offset 0 , 0
 			ColorMask RGBA
@@ -224,6 +201,8 @@ Shader "Aiferu/URP/DefaultLitShader_EmissionBreathing_temp"
 			#pragma multi_compile _ LOD_FADE_CROSSFADE
 			#pragma multi_compile_fog
 			#define ASE_FOG 1
+			#define _ALPHAPREMULTIPLY_ON 1
+			#define _SURFACE_TYPE_TRANSPARENT 1
 			#define _EMISSION
 			#define _ALPHATEST_ON 1
 			#define _NORMALMAP 1
@@ -268,8 +247,8 @@ Shader "Aiferu/URP/DefaultLitShader_EmissionBreathing_temp"
 
 			#pragma shader_feature_local _DETAILINPUTSON_ON
 			#pragma shader_feature_local _EMISSIONBREATHINGENBALE_ON
-			#pragma shader_feature_local _MARBLEND_NORMAL _MARBLEND_RAM _MARBLEND_RMA _MARBLEND_ARM _MARBLEND_AMR _MARBLEND_MRA _MARBLEND_MAR
 			#pragma shader_feature_local _ISSMOOTHNESSMAP_ON
+			#pragma shader_feature_local _MARBLEND_NORMAL _MARBLEND_RAM _MARBLEND_RMA _MARBLEND_ARM _MARBLEND_AMR _MARBLEND_MRA _MARBLEND_MAR
 
 
 			struct VertexInput
@@ -315,7 +294,6 @@ Shader "Aiferu/URP/DefaultLitShader_EmissionBreathing_temp"
 			half _BumpScale;
 			half _DetailNormalMapScale;
 			half _BreathingSpeed;
-			half _MetallicStrength;
 			half _SmoothnessStrength;
 			half _OcclusionStrength;
 			half _AlphtClipThreshold;
@@ -359,7 +337,6 @@ Shader "Aiferu/URP/DefaultLitShader_EmissionBreathing_temp"
 			sampler2D _EmissionMap;
 			sampler2D _EmissionBreathingMask;
 			sampler2D _MARBlendMap;
-			sampler2D _MetallicGlossMap;
 			sampler2D _SmoothnessMap;
 			sampler2D _OcclusionMap;
 
@@ -612,26 +589,6 @@ Shader "Aiferu/URP/DefaultLitShader_EmissionBreathing_temp"
 				
 				half4 tex2DNode91 = tex2D( _MARBlendMap, BaseUV80 );
 				#if defined(_MARBLEND_NORMAL)
-				half staticSwitch87 = tex2D( _MetallicGlossMap, BaseUV80 ).r;
-				#elif defined(_MARBLEND_RAM)
-				half staticSwitch87 = tex2DNode91.b;
-				#elif defined(_MARBLEND_RMA)
-				half staticSwitch87 = tex2DNode91.g;
-				#elif defined(_MARBLEND_ARM)
-				half staticSwitch87 = tex2DNode91.b;
-				#elif defined(_MARBLEND_AMR)
-				half staticSwitch87 = tex2DNode91.g;
-				#elif defined(_MARBLEND_MRA)
-				half staticSwitch87 = tex2DNode91.r;
-				#elif defined(_MARBLEND_MAR)
-				half staticSwitch87 = tex2DNode91.r;
-				#else
-				half staticSwitch87 = tex2DNode91.r;
-				#endif
-				half Metallic25 = staticSwitch87;
-				half clampResult67 = clamp( ( Metallic25 * _MetallicStrength ) , 0.0 , 1.0 );
-				
-				#if defined(_MARBLEND_NORMAL)
 				half staticSwitch89 = tex2D( _SmoothnessMap, BaseUV80 ).r;
 				#elif defined(_MARBLEND_RAM)
 				half staticSwitch89 = tex2DNode91.r;
@@ -683,7 +640,7 @@ Shader "Aiferu/URP/DefaultLitShader_EmissionBreathing_temp"
 				float3 Normal = staticSwitch148;
 				float3 Emission = staticSwitch176.rgb;
 				float3 Specular = 0.5;
-				float Metallic = clampResult67;
+				float Metallic = 0;
 				float Smoothness = staticSwitch83;
 				float Occlusion = clampResult68;
 				float Alpha = Alpha97;
@@ -846,338 +803,6 @@ Shader "Aiferu/URP/DefaultLitShader_EmissionBreathing_temp"
 		Pass
 		{
 			
-			Name "ShadowCaster"
-			Tags { "LightMode"="ShadowCaster" }
-
-			ZWrite On
-			ZTest LEqual
-			AlphaToMask Off
-			ColorMask 0
-
-			HLSLPROGRAM
-
-			#define _NORMAL_DROPOFF_TS 1
-			#pragma multi_compile_instancing
-			#pragma multi_compile _ LOD_FADE_CROSSFADE
-			#pragma multi_compile_fog
-			#define ASE_FOG 1
-			#define _EMISSION
-			#define _ALPHATEST_ON 1
-			#define _NORMALMAP 1
-			#define ASE_SRP_VERSION 100700
-
-
-			#pragma vertex vert
-			#pragma fragment frag
-
-			#define SHADERPASS SHADERPASS_SHADOWCASTER
-
-			#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Color.hlsl"
-			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
-			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
-			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/ShaderGraphFunctions.hlsl"
-
-			
-
-			struct VertexInput
-			{
-				float4 vertex : POSITION;
-				float3 ase_normal : NORMAL;
-				float4 ase_texcoord : TEXCOORD0;
-				UNITY_VERTEX_INPUT_INSTANCE_ID
-			};
-
-			struct VertexOutput
-			{
-				float4 clipPos : SV_POSITION;
-				#if defined(ASE_NEEDS_FRAG_WORLD_POSITION)
-					float3 worldPos : TEXCOORD0;
-				#endif
-				#if defined(REQUIRES_VERTEX_SHADOW_COORD_INTERPOLATOR) && defined(ASE_NEEDS_FRAG_SHADOWCOORDS)
-					float4 shadowCoord : TEXCOORD1;
-				#endif
-				float4 ase_texcoord2 : TEXCOORD2;
-				UNITY_VERTEX_INPUT_INSTANCE_ID
-				UNITY_VERTEX_OUTPUT_STEREO
-			};
-
-			CBUFFER_START(UnityPerMaterial)
-			half4 _BaseColor;
-			half4 _DetailMask_ST;
-			half4 _EmissionColor;
-			half3 _NormalDir;
-			half2 _Tiling;
-			half2 _Offset;
-			half2 _DetailTiling;
-			half2 _DetailOffset;
-			half _DetailAlbedoMapScale;
-			half _BumpScale;
-			half _DetailNormalMapScale;
-			half _BreathingSpeed;
-			half _MetallicStrength;
-			half _SmoothnessStrength;
-			half _OcclusionStrength;
-			half _AlphtClipThreshold;
-			#ifdef ASE_TRANSMISSION
-				float _TransmissionShadow;
-			#endif
-			#ifdef ASE_TRANSLUCENCY
-				float _TransStrength;
-				float _TransNormal;
-				float _TransScattering;
-				float _TransDirect;
-				float _TransAmbient;
-				float _TransShadow;
-			#endif
-			#ifdef ASE_TESSELLATION
-				float _TessPhongStrength;
-				float _TessValue;
-				float _TessMin;
-				float _TessMax;
-				float _TessEdgeLength;
-				float _TessMaxDisp;
-			#endif
-			CBUFFER_END
-
-			// Property used by ScenePickingPass
-			#ifdef SCENEPICKINGPASS
-				float4 _SelectionID;
-			#endif
-
-			// Properties used by SceneSelectionPass
-			#ifdef SCENESELECTIONPASS
-				int _ObjectId;
-				int _PassValue;
-			#endif
-
-			sampler2D _BaseMap;
-
-
-			
-			float3 _LightDirection;
-			#if ASE_SRP_VERSION >= 110000
-				float3 _LightPosition;
-			#endif
-
-			VertexOutput VertexFunction( VertexInput v )
-			{
-				VertexOutput o;
-				UNITY_SETUP_INSTANCE_ID(v);
-				UNITY_TRANSFER_INSTANCE_ID(v, o);
-				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO( o );
-
-				o.ase_texcoord2.xy = v.ase_texcoord.xy;
-				
-				//setting value to unused interpolator channels and avoid initialization warnings
-				o.ase_texcoord2.zw = 0;
-
-				#ifdef ASE_ABSOLUTE_VERTEX_POS
-					float3 defaultVertexValue = v.vertex.xyz;
-				#else
-					float3 defaultVertexValue = float3(0, 0, 0);
-				#endif
-
-				float3 vertexValue = defaultVertexValue;
-				#ifdef ASE_ABSOLUTE_VERTEX_POS
-					v.vertex.xyz = vertexValue;
-				#else
-					v.vertex.xyz += vertexValue;
-				#endif
-
-				v.ase_normal = v.ase_normal;
-
-				float3 positionWS = TransformObjectToWorld( v.vertex.xyz );
-
-				#if defined(ASE_NEEDS_FRAG_WORLD_POSITION)
-					o.worldPos = positionWS;
-				#endif
-
-				float3 normalWS = TransformObjectToWorldDir(v.ase_normal);
-
-				#if ASE_SRP_VERSION >= 110000
-					#if _CASTING_PUNCTUAL_LIGHT_SHADOW
-						float3 lightDirectionWS = normalize(_LightPosition - positionWS);
-					#else
-						float3 lightDirectionWS = _LightDirection;
-					#endif
-
-					float4 clipPos = TransformWorldToHClip(ApplyShadowBias(positionWS, normalWS, lightDirectionWS));
-
-					#if UNITY_REVERSED_Z
-						clipPos.z = min(clipPos.z, UNITY_NEAR_CLIP_VALUE);
-					#else
-						clipPos.z = max(clipPos.z, UNITY_NEAR_CLIP_VALUE);
-					#endif
-				#else
-					float4 clipPos = TransformWorldToHClip(ApplyShadowBias(positionWS, normalWS, _LightDirection));
-					#if UNITY_REVERSED_Z
-						clipPos.z = min(clipPos.z, clipPos.w * UNITY_NEAR_CLIP_VALUE);
-					#else
-						clipPos.z = max(clipPos.z, clipPos.w * UNITY_NEAR_CLIP_VALUE);
-					#endif
-				#endif
-
-				#if defined(REQUIRES_VERTEX_SHADOW_COORD_INTERPOLATOR) && defined(ASE_NEEDS_FRAG_SHADOWCOORDS)
-					VertexPositionInputs vertexInput = (VertexPositionInputs)0;
-					vertexInput.positionWS = positionWS;
-					vertexInput.positionCS = clipPos;
-					o.shadowCoord = GetShadowCoord( vertexInput );
-				#endif
-
-				o.clipPos = clipPos;
-
-				return o;
-			}
-
-			#if defined(ASE_TESSELLATION)
-			struct VertexControl
-			{
-				float4 vertex : INTERNALTESSPOS;
-				float3 ase_normal : NORMAL;
-				float4 ase_texcoord : TEXCOORD0;
-
-				UNITY_VERTEX_INPUT_INSTANCE_ID
-			};
-
-			struct TessellationFactors
-			{
-				float edge[3] : SV_TessFactor;
-				float inside : SV_InsideTessFactor;
-			};
-
-			VertexControl vert ( VertexInput v )
-			{
-				VertexControl o;
-				UNITY_SETUP_INSTANCE_ID(v);
-				UNITY_TRANSFER_INSTANCE_ID(v, o);
-				o.vertex = v.vertex;
-				o.ase_normal = v.ase_normal;
-				o.ase_texcoord = v.ase_texcoord;
-				return o;
-			}
-
-			TessellationFactors TessellationFunction (InputPatch<VertexControl,3> v)
-			{
-				TessellationFactors o;
-				float4 tf = 1;
-				float tessValue = _TessValue; float tessMin = _TessMin; float tessMax = _TessMax;
-				float edgeLength = _TessEdgeLength; float tessMaxDisp = _TessMaxDisp;
-				#if defined(ASE_FIXED_TESSELLATION)
-				tf = FixedTess( tessValue );
-				#elif defined(ASE_DISTANCE_TESSELLATION)
-				tf = DistanceBasedTess(v[0].vertex, v[1].vertex, v[2].vertex, tessValue, tessMin, tessMax, GetObjectToWorldMatrix(), _WorldSpaceCameraPos );
-				#elif defined(ASE_LENGTH_TESSELLATION)
-				tf = EdgeLengthBasedTess(v[0].vertex, v[1].vertex, v[2].vertex, edgeLength, GetObjectToWorldMatrix(), _WorldSpaceCameraPos, _ScreenParams );
-				#elif defined(ASE_LENGTH_CULL_TESSELLATION)
-				tf = EdgeLengthBasedTessCull(v[0].vertex, v[1].vertex, v[2].vertex, edgeLength, tessMaxDisp, GetObjectToWorldMatrix(), _WorldSpaceCameraPos, _ScreenParams, unity_CameraWorldClipPlanes );
-				#endif
-				o.edge[0] = tf.x; o.edge[1] = tf.y; o.edge[2] = tf.z; o.inside = tf.w;
-				return o;
-			}
-
-			[domain("tri")]
-			[partitioning("fractional_odd")]
-			[outputtopology("triangle_cw")]
-			[patchconstantfunc("TessellationFunction")]
-			[outputcontrolpoints(3)]
-			VertexControl HullFunction(InputPatch<VertexControl, 3> patch, uint id : SV_OutputControlPointID)
-			{
-				return patch[id];
-			}
-
-			[domain("tri")]
-			VertexOutput DomainFunction(TessellationFactors factors, OutputPatch<VertexControl, 3> patch, float3 bary : SV_DomainLocation)
-			{
-				VertexInput o = (VertexInput) 0;
-				o.vertex = patch[0].vertex * bary.x + patch[1].vertex * bary.y + patch[2].vertex * bary.z;
-				o.ase_normal = patch[0].ase_normal * bary.x + patch[1].ase_normal * bary.y + patch[2].ase_normal * bary.z;
-				o.ase_texcoord = patch[0].ase_texcoord * bary.x + patch[1].ase_texcoord * bary.y + patch[2].ase_texcoord * bary.z;
-				#if defined(ASE_PHONG_TESSELLATION)
-				float3 pp[3];
-				for (int i = 0; i < 3; ++i)
-					pp[i] = o.vertex.xyz - patch[i].ase_normal * (dot(o.vertex.xyz, patch[i].ase_normal) - dot(patch[i].vertex.xyz, patch[i].ase_normal));
-				float phongStrength = _TessPhongStrength;
-				o.vertex.xyz = phongStrength * (pp[0]*bary.x + pp[1]*bary.y + pp[2]*bary.z) + (1.0f-phongStrength) * o.vertex.xyz;
-				#endif
-				UNITY_TRANSFER_INSTANCE_ID(patch[0], o);
-				return VertexFunction(o);
-			}
-			#else
-			VertexOutput vert ( VertexInput v )
-			{
-				return VertexFunction( v );
-			}
-			#endif
-
-			#if defined(ASE_EARLY_Z_DEPTH_OPTIMIZE)
-				#define ASE_SV_DEPTH SV_DepthLessEqual
-			#else
-				#define ASE_SV_DEPTH SV_Depth
-			#endif
-
-			half4 frag(	VertexOutput IN
-						#ifdef ASE_DEPTH_WRITE_ON
-						,out float outputDepth : ASE_SV_DEPTH
-						#endif
-						 ) : SV_TARGET
-			{
-				UNITY_SETUP_INSTANCE_ID( IN );
-				UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX( IN );
-
-				#if defined(ASE_NEEDS_FRAG_WORLD_POSITION)
-					float3 WorldPosition = IN.worldPos;
-				#endif
-
-				float4 ShadowCoords = float4( 0, 0, 0, 0 );
-
-				#if defined(ASE_NEEDS_FRAG_SHADOWCOORDS)
-					#if defined(REQUIRES_VERTEX_SHADOW_COORD_INTERPOLATOR)
-						ShadowCoords = IN.shadowCoord;
-					#elif defined(MAIN_LIGHT_CALCULATE_SHADOWS)
-						ShadowCoords = TransformWorldToShadowCoord( WorldPosition );
-					#endif
-				#endif
-
-				half2 texCoord75 = IN.ase_texcoord2.xy * _Tiling + _Offset;
-				half2 BaseUV80 = texCoord75;
-				half4 BaseColor24 = tex2D( _BaseMap, BaseUV80 );
-				half4 temp_output_41_0 = ( _BaseColor * BaseColor24 );
-				half Alpha97 = temp_output_41_0.a;
-				
-
-				float Alpha = Alpha97;
-				float AlphaClipThreshold = _AlphtClipThreshold;
-				float AlphaClipThresholdShadow = 0.5;
-
-				#ifdef ASE_DEPTH_WRITE_ON
-					float DepthValue = 0;
-				#endif
-
-				#ifdef _ALPHATEST_ON
-					#ifdef _ALPHATEST_SHADOW_ON
-						clip(Alpha - AlphaClipThresholdShadow);
-					#else
-						clip(Alpha - AlphaClipThreshold);
-					#endif
-				#endif
-
-				#ifdef LOD_FADE_CROSSFADE
-					LODDitheringTransition( IN.clipPos.xyz, unity_LODFade.x );
-				#endif
-
-				#ifdef ASE_DEPTH_WRITE_ON
-					outputDepth = DepthValue;
-				#endif
-
-				return 0;
-			}
-			ENDHLSL
-		}
-
-		
-		Pass
-		{
-			
 			Name "DepthOnly"
 			Tags { "LightMode"="DepthOnly" }
 
@@ -1192,6 +817,8 @@ Shader "Aiferu/URP/DefaultLitShader_EmissionBreathing_temp"
 			#pragma multi_compile _ LOD_FADE_CROSSFADE
 			#pragma multi_compile_fog
 			#define ASE_FOG 1
+			#define _ALPHAPREMULTIPLY_ON 1
+			#define _SURFACE_TYPE_TRANSPARENT 1
 			#define _EMISSION
 			#define _ALPHATEST_ON 1
 			#define _NORMALMAP 1
@@ -1245,7 +872,6 @@ Shader "Aiferu/URP/DefaultLitShader_EmissionBreathing_temp"
 			half _BumpScale;
 			half _DetailNormalMapScale;
 			half _BreathingSpeed;
-			half _MetallicStrength;
 			half _SmoothnessStrength;
 			half _OcclusionStrength;
 			half _AlphtClipThreshold;
@@ -1477,8 +1103,8 @@ Shader "Aiferu/URP/DefaultLitShader_EmissionBreathing_temp"
 			Name "Universal2D"
 			Tags { "LightMode"="Universal2D" }
 
-			Blend One Zero, One Zero
-			ZWrite On
+			Blend One OneMinusSrcAlpha, One OneMinusSrcAlpha
+			ZWrite Off
 			ZTest LEqual
 			Offset 0 , 0
 			ColorMask RGBA
@@ -1490,6 +1116,8 @@ Shader "Aiferu/URP/DefaultLitShader_EmissionBreathing_temp"
 			#pragma multi_compile _ LOD_FADE_CROSSFADE
 			#pragma multi_compile_fog
 			#define ASE_FOG 1
+			#define _ALPHAPREMULTIPLY_ON 1
+			#define _SURFACE_TYPE_TRANSPARENT 1
 			#define _EMISSION
 			#define _ALPHATEST_ON 1
 			#define _NORMALMAP 1
@@ -1544,7 +1172,6 @@ Shader "Aiferu/URP/DefaultLitShader_EmissionBreathing_temp"
 			half _BumpScale;
 			half _DetailNormalMapScale;
 			half _BreathingSpeed;
-			half _MetallicStrength;
 			half _SmoothnessStrength;
 			half _OcclusionStrength;
 			half _AlphtClipThreshold;
@@ -1784,6 +1411,8 @@ Shader "Aiferu/URP/DefaultLitShader_EmissionBreathing_temp"
 			#pragma multi_compile _ LOD_FADE_CROSSFADE
 			#pragma multi_compile_fog
 			#define ASE_FOG 1
+			#define _ALPHAPREMULTIPLY_ON 1
+			#define _SURFACE_TYPE_TRANSPARENT 1
 			#define _EMISSION
 			#define _ALPHATEST_ON 1
 			#define _NORMALMAP 1
@@ -1838,7 +1467,6 @@ Shader "Aiferu/URP/DefaultLitShader_EmissionBreathing_temp"
 			half _BumpScale;
 			half _DetailNormalMapScale;
 			half _BreathingSpeed;
-			half _MetallicStrength;
 			half _SmoothnessStrength;
 			half _OcclusionStrength;
 			half _AlphtClipThreshold;
@@ -2078,8 +1706,8 @@ Shader "Aiferu/URP/DefaultLitShader_EmissionBreathing_temp"
 			Name "GBuffer"
 			Tags { "LightMode"="UniversalGBuffer" }
 
-			Blend One Zero, One Zero
-			ZWrite On
+			Blend One OneMinusSrcAlpha, One OneMinusSrcAlpha
+			ZWrite Off
 			ZTest LEqual
 			Offset 0 , 0
 			ColorMask RGBA
@@ -2092,6 +1720,8 @@ Shader "Aiferu/URP/DefaultLitShader_EmissionBreathing_temp"
 			#pragma multi_compile _ LOD_FADE_CROSSFADE
 			#pragma multi_compile_fog
 			#define ASE_FOG 1
+			#define _ALPHAPREMULTIPLY_ON 1
+			#define _SURFACE_TYPE_TRANSPARENT 1
 			#define _EMISSION
 			#define _ALPHATEST_ON 1
 			#define _NORMALMAP 1
@@ -2134,8 +1764,8 @@ Shader "Aiferu/URP/DefaultLitShader_EmissionBreathing_temp"
 
 			#pragma shader_feature_local _DETAILINPUTSON_ON
 			#pragma shader_feature_local _EMISSIONBREATHINGENBALE_ON
-			#pragma shader_feature_local _MARBLEND_NORMAL _MARBLEND_RAM _MARBLEND_RMA _MARBLEND_ARM _MARBLEND_AMR _MARBLEND_MRA _MARBLEND_MAR
 			#pragma shader_feature_local _ISSMOOTHNESSMAP_ON
+			#pragma shader_feature_local _MARBLEND_NORMAL _MARBLEND_RAM _MARBLEND_RMA _MARBLEND_ARM _MARBLEND_AMR _MARBLEND_MRA _MARBLEND_MAR
 
 
 			struct VertexInput
@@ -2181,7 +1811,6 @@ Shader "Aiferu/URP/DefaultLitShader_EmissionBreathing_temp"
 			half _BumpScale;
 			half _DetailNormalMapScale;
 			half _BreathingSpeed;
-			half _MetallicStrength;
 			half _SmoothnessStrength;
 			half _OcclusionStrength;
 			half _AlphtClipThreshold;
@@ -2225,7 +1854,6 @@ Shader "Aiferu/URP/DefaultLitShader_EmissionBreathing_temp"
 			sampler2D _EmissionMap;
 			sampler2D _EmissionBreathingMask;
 			sampler2D _MARBlendMap;
-			sampler2D _MetallicGlossMap;
 			sampler2D _SmoothnessMap;
 			sampler2D _OcclusionMap;
 
@@ -2480,26 +2108,6 @@ Shader "Aiferu/URP/DefaultLitShader_EmissionBreathing_temp"
 				
 				half4 tex2DNode91 = tex2D( _MARBlendMap, BaseUV80 );
 				#if defined(_MARBLEND_NORMAL)
-				half staticSwitch87 = tex2D( _MetallicGlossMap, BaseUV80 ).r;
-				#elif defined(_MARBLEND_RAM)
-				half staticSwitch87 = tex2DNode91.b;
-				#elif defined(_MARBLEND_RMA)
-				half staticSwitch87 = tex2DNode91.g;
-				#elif defined(_MARBLEND_ARM)
-				half staticSwitch87 = tex2DNode91.b;
-				#elif defined(_MARBLEND_AMR)
-				half staticSwitch87 = tex2DNode91.g;
-				#elif defined(_MARBLEND_MRA)
-				half staticSwitch87 = tex2DNode91.r;
-				#elif defined(_MARBLEND_MAR)
-				half staticSwitch87 = tex2DNode91.r;
-				#else
-				half staticSwitch87 = tex2DNode91.r;
-				#endif
-				half Metallic25 = staticSwitch87;
-				half clampResult67 = clamp( ( Metallic25 * _MetallicStrength ) , 0.0 , 1.0 );
-				
-				#if defined(_MARBLEND_NORMAL)
 				half staticSwitch89 = tex2D( _SmoothnessMap, BaseUV80 ).r;
 				#elif defined(_MARBLEND_RAM)
 				half staticSwitch89 = tex2DNode91.r;
@@ -2551,7 +2159,7 @@ Shader "Aiferu/URP/DefaultLitShader_EmissionBreathing_temp"
 				float3 Normal = staticSwitch148;
 				float3 Emission = staticSwitch176.rgb;
 				float3 Specular = 0.5;
-				float Metallic = clampResult67;
+				float Metallic = 0;
 				float Smoothness = staticSwitch83;
 				float Occlusion = clampResult68;
 				float Alpha = Alpha97;
@@ -2686,9 +2294,9 @@ Node;AmplifyShaderEditor.ColorNode;40;-2122.104,-587.3575;Inherit;False;Property
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;7;0,0;Float;False;False;-1;2;UnityEditor.ShaderGraph.PBRMasterGUI;0;12;New Amplify Shader;94348b07e5e8bab40bd6c8a1e3df54cd;True;ShadowCaster;0;2;ShadowCaster;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;5;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;False;False;True;False;False;False;False;0;False;;False;False;False;False;False;False;False;False;False;True;1;False;;True;3;False;;False;True;1;LightMode=ShadowCaster;False;False;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;8;0,0;Float;False;False;-1;2;UnityEditor.ShaderGraph.PBRMasterGUI;0;12;New Amplify Shader;94348b07e5e8bab40bd6c8a1e3df54cd;True;DepthOnly;0;3;DepthOnly;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;5;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;False;False;True;False;False;False;False;0;False;;False;False;False;False;False;False;False;False;False;True;1;False;;False;False;True;1;LightMode=DepthOnly;False;False;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;9;0,0;Float;False;False;-1;2;UnityEditor.ShaderGraph.PBRMasterGUI;0;12;New Amplify Shader;94348b07e5e8bab40bd6c8a1e3df54cd;True;Meta;0;4;Meta;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;5;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;2;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;LightMode=Meta;False;False;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;10;0,0;Float;False;False;-1;2;UnityEditor.ShaderGraph.PBRMasterGUI;0;12;New Amplify Shader;94348b07e5e8bab40bd6c8a1e3df54cd;True;Universal2D;0;5;Universal2D;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;5;True;12;all;0;False;True;1;1;False;;0;False;;1;1;False;;0;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;True;True;True;True;0;False;;False;False;False;False;False;False;False;False;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;1;LightMode=Universal2D;False;False;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;10;0,0;Float;False;False;-1;2;UnityEditor.ShaderGraph.PBRMasterGUI;0;12;New Amplify Shader;94348b07e5e8bab40bd6c8a1e3df54cd;True;Universal2D;0;5;Universal2D;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;5;True;12;all;0;False;True;1;1;False;;10;False;;1;1;False;;10;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;True;True;True;True;0;False;;False;False;False;False;False;False;False;False;False;True;2;False;;True;3;False;;True;True;0;False;;0;False;;True;1;LightMode=Universal2D;False;False;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;11;0,0;Float;False;False;-1;2;UnityEditor.ShaderGraph.PBRMasterGUI;0;12;New Amplify Shader;94348b07e5e8bab40bd6c8a1e3df54cd;True;DepthNormals;0;6;DepthNormals;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;5;True;12;all;0;False;True;1;1;False;;0;False;;0;1;False;;0;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;False;;True;3;False;;False;True;1;LightMode=DepthNormals;False;False;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;12;0,0;Float;False;False;-1;2;UnityEditor.ShaderGraph.PBRMasterGUI;0;12;New Amplify Shader;94348b07e5e8bab40bd6c8a1e3df54cd;True;GBuffer;0;7;GBuffer;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;5;True;12;all;0;False;True;1;1;False;;0;False;;1;1;False;;0;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;True;True;True;True;0;False;;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;1;LightMode=UniversalGBuffer;False;False;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;12;0,0;Float;False;False;-1;2;UnityEditor.ShaderGraph.PBRMasterGUI;0;12;New Amplify Shader;94348b07e5e8bab40bd6c8a1e3df54cd;True;GBuffer;0;7;GBuffer;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;5;True;12;all;0;False;True;1;1;False;;10;False;;1;1;False;;10;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;True;True;True;True;0;False;;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;2;False;;True;3;False;;True;True;0;False;;0;False;;True;1;LightMode=UniversalGBuffer;False;False;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.GetLocalVarNode;31;-2117.668,132.3568;Inherit;False;29;Emission;1;0;OBJECT;;False;1;COLOR;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;49;-1845.805,136.0433;Inherit;False;2;2;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;1;COLOR;0
 Node;AmplifyShaderEditor.GetLocalVarNode;36;-2110.211,966.8092;Inherit;False;27;Occlusion;1;0;OBJECT;;False;1;FLOAT;0
@@ -2720,7 +2328,7 @@ Node;AmplifyShaderEditor.BlendNormalsNode;132;-1594.683,-109.8511;Inherit;False;
 Node;AmplifyShaderEditor.StaticSwitch;148;-1288.123,-182.3863;Inherit;False;Property;_Keyword3;Keyword 3;26;0;Create;True;0;0;0;False;0;False;0;0;0;True;;Toggle;2;Key0;Key1;Reference;141;True;True;All;9;1;FLOAT3;0,0,0;False;0;FLOAT3;0,0,0;False;2;FLOAT3;0,0,0;False;3;FLOAT3;0,0,0;False;4;FLOAT3;0,0,0;False;5;FLOAT3;0,0,0;False;6;FLOAT3;0,0,0;False;7;FLOAT3;0,0,0;False;8;FLOAT3;0,0,0;False;1;FLOAT3;0
 Node;AmplifyShaderEditor.SimpleAddOpNode;125;-1641.733,-551.9537;Inherit;False;2;2;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;1;COLOR;0
 Node;AmplifyShaderEditor.StaticSwitch;141;-1244.796,-460.6584;Inherit;False;Property;_DetailInputsOn;DetailInputsOn;26;0;Create;True;0;0;0;False;0;False;0;0;0;True;;Toggle;2;Key0;Key1;Create;True;True;All;9;1;COLOR;0,0,0,0;False;0;COLOR;0,0,0,0;False;2;COLOR;0,0,0,0;False;3;COLOR;0,0,0,0;False;4;COLOR;0,0,0,0;False;5;COLOR;0,0,0,0;False;6;COLOR;0,0,0,0;False;7;COLOR;0,0,0,0;False;8;COLOR;0,0,0,0;False;1;COLOR;0
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;6;383.8018,3.425411;Half;False;True;-1;2;LWGUI.LWGUI;0;12;Aiferu/URP/DefaultLitShader_EmissionBreathing_temp;94348b07e5e8bab40bd6c8a1e3df54cd;True;Forward;0;1;Forward;18;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;True;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;5;True;12;all;0;False;True;1;1;False;;0;False;;1;1;False;;0;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;True;True;True;True;0;False;;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;1;LightMode=UniversalForward;False;False;0;Hidden/InternalErrorShader;0;0;Standard;38;Workflow;1;638072049345468020;Surface;0;638240507194626600;  Refraction Model;0;638073804541417172;  Blend;1;638087535761395970;Two Sided;1;638073801290694767;Fragment Normal Space,InvertActionOnDeselection;0;0;Transmission;0;638084967100001452;  Transmission Shadow;0.5,False,;0;Translucency;0;638084967172529757;  Translucency Strength;1,False,;0;  Normal Distortion;0.5,False,;0;  Scattering;2,False,;0;  Direct;0.9,False,;0;  Ambient;0.1,False,;0;  Shadow;0.5,False,;0;Cast Shadows;1;638084145753268325;  Use Shadow Threshold;0;638084145723279078;Receive Shadows;1;638084983168514286;GPU Instancing;1;0;LOD CrossFade;1;0;Built-in Fog;1;0;_FinalColorxAlpha;0;0;Meta Pass;0;638072046970880749;Override Baked GI;0;0;Extra Pre Pass;0;0;DOTS Instancing;0;638072005011606289;Tessellation;0;0;  Phong;0;0;  Strength;0.5,False,;0;  Type;0;0;  Tess;16,False,;0;  Min;10,False,;0;  Max;25,False,;0;  Edge Length;16,False,;0;  Max Displacement;25,False,;0;Write Depth;0;0;  Early Z;0;0;Vertex Position,InvertActionOnDeselection;1;0;0;8;False;True;True;True;False;True;True;True;False;;False;0
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;6;383.8018,3.425411;Half;False;True;-1;2;LWGUI.LWGUI;0;12;Aiferu/URP/DefaultLitShader_EmissionBreathing_temp;94348b07e5e8bab40bd6c8a1e3df54cd;True;Forward;0;1;Forward;18;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;True;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;3;RenderPipeline=UniversalPipeline;RenderType=Transparent=RenderType;Queue=Transparent=Queue=0;True;5;True;12;all;0;False;True;1;1;False;;10;False;;1;1;False;;10;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;True;True;True;True;0;False;;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;2;False;;True;3;False;;True;True;0;False;;0;False;;True;1;LightMode=UniversalForward;False;False;0;Hidden/InternalErrorShader;0;0;Standard;38;Workflow;1;638242257906782752;Surface;1;638242257918163867;  Refraction Model;0;638073804541417172;  Blend;1;638087535761395970;Two Sided;1;638073801290694767;Fragment Normal Space,InvertActionOnDeselection;0;0;Transmission;0;638084967100001452;  Transmission Shadow;0.5,False,;0;Translucency;0;638084967172529757;  Translucency Strength;1,False,;0;  Normal Distortion;0.5,False,;0;  Scattering;2,False,;0;  Direct;0.9,False,;0;  Ambient;0.1,False,;0;  Shadow;0.5,False,;0;Cast Shadows;0;638242287344930620;  Use Shadow Threshold;0;638084145723279078;Receive Shadows;1;638084983168514286;GPU Instancing;1;0;LOD CrossFade;1;0;Built-in Fog;1;0;_FinalColorxAlpha;0;0;Meta Pass;0;638072046970880749;Override Baked GI;0;0;Extra Pre Pass;0;0;DOTS Instancing;0;638072005011606289;Tessellation;0;0;  Phong;0;0;  Strength;0.5,False,;0;  Type;0;0;  Tess;16,False,;0;  Min;10,False,;0;  Max;25,False,;0;  Edge Length;16,False,;0;  Max Displacement;25,False,;0;Write Depth;0;0;  Early Z;0;0;Vertex Position,InvertActionOnDeselection;1;0;0;8;False;True;False;True;False;True;True;True;False;;False;0
 Node;AmplifyShaderEditor.RangedFloatNode;101;-690.835,713.7344;Inherit;False;Property;_AlphtClipThreshold;AlphtClipThreshold;22;0;Create;True;0;0;0;False;0;False;0;0;0;1;0;1;FLOAT;0
 Node;AmplifyShaderEditor.GetLocalVarNode;133;-1844.683,-44.85106;Inherit;False;116;DetailNormal;1;0;OBJECT;;False;1;FLOAT3;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;159;-8033.479,1982.485;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0.1;False;1;FLOAT;0
@@ -2822,7 +2430,6 @@ WireConnection;141;0;125;0
 WireConnection;6;0;141;0
 WireConnection;6;1;148;0
 WireConnection;6;2;176;0
-WireConnection;6;3;67;0
 WireConnection;6;4;83;0
 WireConnection;6;5;68;0
 WireConnection;6;6;97;0
@@ -2860,4 +2467,4 @@ WireConnection;176;1;49;0
 WireConnection;176;0;172;0
 WireConnection;149;1;168;0
 ASEEND*/
-//CHKSM=D7AA475A99A3A8889231E7F886844A278017A385
+//CHKSM=C6D70454A2245C995C71C650785EBEEF316C5CFF

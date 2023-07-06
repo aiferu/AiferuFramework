@@ -11,6 +11,7 @@ Shader "Aiferu/URP/DefaultLitShader_EmissionBreathing"
 		[SubEnum(Preset, UnityEngine.Rendering.BlendMode)] _SrcBlend ("SrcBlend", Float) = 1
 		[SubEnum(Preset, UnityEngine.Rendering.BlendMode)] _DstBlend ("DstBlend", Float) = 0
 		[SubToggle(Preset)] _ZWrite ("ZWrite ", Float) = 1
+		//[SubToggle(Preset)] _CastShadow ("CastShadow ", Float) = 1
 		[SubEnum(Preset, UnityEngine.Rendering.CompareFunction)] _ZTest ("ZTest", Float) = 4 // 4 is LEqual
 		[SubEnum(Preset, RGBA, 15, RGB, 14)] _ColorMask ("ColorMask", Float) = 15 // 15 is RGBA (binary 1111)
 		//需要复制的地方End
@@ -98,12 +99,14 @@ Shader "Aiferu/URP/DefaultLitShader_EmissionBreathing"
 
 		Tags { "RenderPipeline"="UniversalPipeline" "RenderType"="Opaque" "Queue"="Geometry" }
 
-		Cull Back
-		ZWrite On
-		ZTest LEqual
+		//需要复制的地方Start
+		Cull [_Cull]
+		ZWrite [_ZWrite]
+		ZTest [_ZTest]
 		Offset 0 , 0
 		AlphaToMask Off
-
+		ColorMask [_ColorMask]
+		//需要复制的地方End
 		
 
 		HLSLINCLUDE
@@ -221,12 +224,13 @@ Shader "Aiferu/URP/DefaultLitShader_EmissionBreathing"
 			Name "Forward"
 			Tags { "LightMode"="UniversalForward" }
 
-			Blend One Zero, One Zero
-			ZWrite On
-			ZTest LEqual
+			//需要复制的地方Start
+			Blend [_SrcBlend] [_DstBlend], [_SrcBlend] [_DstBlend]
+			ZWrite [_ZWrite]
+			ZTest [_ZTest]
 			Offset 0 , 0
-			ColorMask RGBA
-
+			ColorMask [_ColorMask]
+			//需要复制的地方End
 			
 
 			HLSLPROGRAM
@@ -877,8 +881,7 @@ Shader "Aiferu/URP/DefaultLitShader_EmissionBreathing"
 			#define _ALPHATEST_ON 1
 			#define _NORMALMAP 1
 			#define ASE_SRP_VERSION 100700
-
-
+			//#pragma shader_feature_local _CASTSHADOW_ON
 			#pragma vertex vert
 			#pragma fragment frag
 
@@ -889,7 +892,7 @@ Shader "Aiferu/URP/DefaultLitShader_EmissionBreathing"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/ShaderGraphFunctions.hlsl"
 
-			
+		//	#ifdef _CASTSHADOW_ON
 
 			struct VertexInput
 			{
@@ -1183,6 +1186,8 @@ Shader "Aiferu/URP/DefaultLitShader_EmissionBreathing"
 
 				return 0;
 			}
+
+		//	#endif
 			ENDHLSL
 		}
 
@@ -1489,11 +1494,13 @@ Shader "Aiferu/URP/DefaultLitShader_EmissionBreathing"
 			Name "Universal2D"
 			Tags { "LightMode"="Universal2D" }
 
-			Blend One Zero, One Zero
-			ZWrite On
-			ZTest LEqual
+			//需要复制的地方Start
+			Blend [_SrcBlend] [_DstBlend], [_SrcBlend] [_DstBlend]
+			ZWrite [_ZWrite]
+			ZTest [_ZTest]
 			Offset 0 , 0
-			ColorMask RGBA
+			ColorMask [_ColorMask]
+			//需要复制的地方End
 
 			HLSLPROGRAM
 
@@ -2090,12 +2097,13 @@ Shader "Aiferu/URP/DefaultLitShader_EmissionBreathing"
 			Name "GBuffer"
 			Tags { "LightMode"="UniversalGBuffer" }
 
-			Blend One Zero, One Zero
-			ZWrite On
-			ZTest LEqual
+			//需要复制的地方Start
+			Blend [_SrcBlend] [_DstBlend], [_SrcBlend] [_DstBlend]
+			ZWrite [_ZWrite]
+			ZTest [_ZTest]
 			Offset 0 , 0
-			ColorMask RGBA
-			
+			ColorMask [_ColorMask]
+			//需要复制的地方End
 
 			HLSLPROGRAM
 
