@@ -5,19 +5,17 @@ Shader "Aiferu/URP/DefaultLitShader_EmissionBreathing"
 	Properties
 	{
 		//需要复制的地方Start
-		[Main(Preset, _, on, off)] _PresetGroup ("Preset Samples", float) = 0
-		[Preset(Preset, LWGUI_BlendModePreset)] _BlendMode ("Blend Mode Preset", float) = 0
-		[SubEnum(Preset, UnityEngine.Rendering.CullMode)] _Cull ("Cull", Float) = 2
-		[SubEnum(Preset, UnityEngine.Rendering.BlendMode)] _SrcBlend ("SrcBlend", Float) = 1
-		[SubEnum(Preset, UnityEngine.Rendering.BlendMode)] _DstBlend ("DstBlend", Float) = 0
-		[SubToggle(Preset)] _ZWrite ("ZWrite ", Float) = 1
-		//[SubToggle(Preset)] _CastShadow ("CastShadow ", Float) = 1
-		[SubEnum(Preset, UnityEngine.Rendering.CompareFunction)] _ZTest ("ZTest", Float) = 4 // 4 is LEqual
-		[SubEnum(Preset, RGBA, 15, RGB, 14)] _ColorMask ("ColorMask", Float) = 15 // 15 is RGBA (binary 1111)
+		[Main(SurfaceOptions, _, on, off)] _surfaceOptions ("SurfaceOptions", float) = 0
+		[Preset(SurfaceOptions, LWGUI_BlendModePreset)] _BlendMode ("Blend Mode Preset", float) = 0
+		[SubEnum(SurfaceOptions, UnityEngine.Rendering.CullMode)] _Cull ("Cull", Float) = 2
+		[SubEnum(SurfaceOptions, UnityEngine.Rendering.BlendMode)] _SrcBlend ("SrcBlend", Float) = 1
+		[SubEnum(SurfaceOptions, UnityEngine.Rendering.BlendMode)] _DstBlend ("DstBlend", Float) = 0
+		[SubToggle(SurfaceOptions)] _ZWrite ("ZWrite ", Float) = 1
+		[SubEnum(SurfaceOptions, UnityEngine.Rendering.CompareFunction)] _ZTest ("ZTest", Float) = 4 // 4 is LEqual
+		[SubEnum(SurfaceOptions, RGBA, 15, RGB, 14)] _ColorMask ("ColorMask", Float) = 15 // 15 is RGBA (binary 1111)
 		//需要复制的地方End
 
 	    //需要复制的地方Start
-		[Main(SurfaceOptions,_,off,off)]_surfaceOptions ("SurfaceOptions", float) = 0
 		[Sub(SurfaceOptions)]_AlphtClipThreshold("AlphtClipThreshold", Range( 0 , 1)) = 0
 
 		[Main(MainMaps,_,off,off)]_mainMaps ("MainMaps", float) = 0
@@ -84,11 +82,13 @@ Shader "Aiferu/URP/DefaultLitShader_EmissionBreathing"
 		//_TessMax( "Tess Max Distance", Float ) = 25
 		//_TessEdgeLength ( "Tess Edge length", Range( 2, 50 ) ) = 16
 		//_TessMaxDisp( "Tess Max Displacement", Float ) = 25
-
-		[HideInInspector][ToggleOff] _SpecularHighlights("Specular Highlights", Float) = 1.0
-		[HideInInspector][ToggleOff] _EnvironmentReflections("Environment Reflections", Float) = 1.0
-		[HideInInspector][ToggleOff] _ReceiveShadows("Receive Shadows", Float) = 1.0
-
+		
+		//需要复制的地方Start
+		[Main(Advanced,_KEYWORD,off,off)]_advanced ("Advanced", float) = 0
+		[SubToggle(Advanced,_SPECULARHIGHLIGHTS_OFF)] _SpecularHighlights("Disable Specular Highlights", Float) = 0.0
+		[SubToggle(Advanced,_ENVIRONMENTREFLECTIONS_OFF)] _EnvironmentReflections("Disable Environment Reflections", Float) = 0.0
+		[SubToggle(Advanced,_RECEIVE_SHADOWS_OFF)]_ReceiveShadows("Disable Receive Shadows", Float) = 0.0
+		//需要复制的地方End
 	}
 
 	SubShader
