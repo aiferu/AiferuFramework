@@ -1,3 +1,4 @@
+ï»¿#if UNITY_EDITOR
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,25 +8,25 @@ namespace AiferuFramework
     [CustomEditor(typeof(StepLoading))]
     public class StepLoadingEW : Editor
     {
-        //Òş²ØËùÓĞµÄÔ¤ÖÆÌå¶ÔÏó
-        //ÏÔÊ¾ËùÓĞµÄÔ¤ÖÆÌå¶ÔÏó
+        //éšè—æ‰€æœ‰çš„é¢„åˆ¶ä½“å¯¹è±¡
+        //æ˜¾ç¤ºæ‰€æœ‰çš„é¢„åˆ¶ä½“å¯¹è±¡
         public override void OnInspectorGUI()
         {
             base.OnInspectorGUI();
             StepLoading stepLoading = (StepLoading)target;
-            if (GUILayout.Button("ÏÔÊ¾ËùÓĞ¶ÔÏó"))
+            if (GUILayout.Button("æ˜¾ç¤ºæ‰€æœ‰å¯¹è±¡"))
             {
                 stepLoading.ShowAllProfab();
-                Debug.Log("ÏÔÊ¾ËùÓĞ¶ÔÏó");
+                Debug.Log("æ˜¾ç¤ºæ‰€æœ‰å¯¹è±¡");
             }
-            if (GUILayout.Button("¹Ø±ÕËùÓĞ¶ÔÏó"))
+            if (GUILayout.Button("å…³é—­æ‰€æœ‰å¯¹è±¡"))
             {
                 stepLoading.HideAllProfab();
-                Debug.Log("Òş²ØËùÓĞ¶ÔÏó");
+                Debug.Log("éšè—æ‰€æœ‰å¯¹è±¡");
             }
         }
     }
     
 }
-
+#endif
 
